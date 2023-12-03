@@ -1,0 +1,92 @@
+
+
+.conteiner-footer{
+    padding: 35px 5px 35px 35px;
+    display: grid;
+    background-color: #e7eff5;
+        grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    row-gap: 2rem;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+
+.content-fonafe-logo{
+    position: relative;
+    margin: 10px;
+}
+.content-redes-footer{
+    margin: 10px;
+    position: relative;
+    top: -10px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.icon-footer-redes{
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    padding-right:10px;
+}
+.caja-icon-redes-footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content-mapa-sitio-footer{
+    padding-left: 80px;
+}
+
+
+.content-mapa-sitio-links{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.content-mapa-sitio-links{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    line-height: 23px;
+}
+
+.bold{
+    font-weight: 800;
+    font-size: 17px;
+    color: #525252;
+    line-height: 30px;
+}
+
+.color-tamaño{
+    font-weight: 600;
+    color: #848586;
+}
+.content-mapa-sitio-links p{
+    line-height: 23px;
+}
+.links-footer:hover{
+    color: #885050;
+}
+.icon-footer-redes:hover{
+    cursor: pointer;
+}
+
+@media screen and (max-width:720px) {
+    
+    .content-mapa-sitio-footer{
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width:420px) {
+    
+    .content-fonafe-logo img{
+        width: 250px;
+        height: 50px;
+    }
+}
