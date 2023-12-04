@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FooterComponent } from './footer/footer.component';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { FooterComponent } from './components/footer/footer.component';
 
 @Component({
   selector: 'app-root',
@@ -15,9 +15,9 @@ export class AppComponent {
 
   constructor(private router: Router) {}
 
-  shouldShowNavbar(): boolean {
-    // Obtén la ruta actual y decide si mostrar o no el navbar
+  shouldShowLayout(): boolean {
     const currentRoute = this.router.url;
-    return currentRoute !== '/login'; // Muestra el navbar en todas las rutas excepto '/login'
+    return currentRoute !== '/login';
   }
+
 }

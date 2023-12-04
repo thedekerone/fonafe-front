@@ -1,6 +1,11 @@
-@if(shouldShowNavbar()){
+@if(shouldShowLayout()){
   <a routerLink="/login">login</a>
 }
 
 <router-outlet></router-outlet>
-<app-footer></app-footer>
+
+@if(shouldShowLayout()){
+  <app-footer></app-footer>
+}
+
+

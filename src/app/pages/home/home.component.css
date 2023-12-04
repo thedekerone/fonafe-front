@@ -1,0 +1,9 @@
+.hero{
+  width: 100%;
+  height: 75vh;
+  min-height: 30rem;
+  background-image: url("../../../assets/IMAGEN.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
