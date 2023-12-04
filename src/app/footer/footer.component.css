@@ -1,23 +1,23 @@
 
 
-.conteiner-footer{
-    padding: 35px 5px 35px 35px;
+.container-footer{
+    padding: 2.187rem 0.31rem 2.18rem 2.18rem ;
     display: grid;
-    background-color: #e7eff5;
-        grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    background-color: #f5e7e7;
+    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
     row-gap: 2rem;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-between;
-    
 }
 
 .content-fonafe-logo{
     position: relative;
-    margin: 10px;
+    margin: 0.65rem;
 }
+
 .content-redes-footer{
-    margin: 10px;
+    margin:0.65rem;
     position: relative;
     top: -10px;
     display: flex;
@@ -27,18 +27,20 @@
 }
 
 .icon-footer-redes{
-    width: 45px;
-    height: 45px;
+    width: 2.8rem;
+    height: 2.8rem;
     object-fit: contain;
-    padding-right:10px;
+    padding-right:0.65rem;
 }
+
 .caja-icon-redes-footer{
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .content-mapa-sitio-footer{
-    padding-left: 80px;
+    padding-left: 5rem;
 }
 
 
@@ -52,41 +54,47 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    line-height: 23px;
+    line-height: 1.43rem;
 }
 
 .bold{
     font-weight: 800;
-    font-size: 17px;
+    font-size: 1rem;
     color: #525252;
-    line-height: 30px;
+    line-height: 1.87rem;
 }
 
 .color-tamaño{
     font-weight: 600;
     color: #848586;
 }
+
 .content-mapa-sitio-links p{
-    line-height: 23px;
+    line-height: 1.43rem;
 }
+
 .links-footer:hover{
     color: #885050;
 }
+
 .icon-footer-redes:hover{
     cursor: pointer;
 }
 
-@media screen and (max-width:720px) {
+@media screen and (max-width:45rem) {
     
     .content-mapa-sitio-footer{
-        padding: 10px;
+        padding: 0rem;
     }
 }
 
-@media screen and (max-width:420px) {
+@media screen and (max-width:27.25rem) {
     
     .content-fonafe-logo img{
-        width: 250px;
-        height: 50px;
+        width: 15.62rem;
+        height: 3.12rem;
+    }
+    .content-redes-footer{
+        margin: 0;
     }
 }
