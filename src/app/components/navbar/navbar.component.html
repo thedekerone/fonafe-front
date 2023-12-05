@@ -8,7 +8,8 @@
     </div>
   </div>
   <!--boton mobile-->
-  <div class="flex flex-row  w-screen bg-gray-500 justify-end md:hidden">
+  <div class="flex flex-row  w-screen bg-gray-500 justify-between py-2 md:hidden">
+    <img class="w-36 pl-8" src="../../../assets/LOGO_BLANCO.svg" alt="Logo">
     <button (click)="handleClick()" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium pr-5 sm:pr-14">
       <i class="fa-solid fa-bars" ></i>
     </button>
@@ -18,7 +19,7 @@
     <a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">¿Quienes Somos?</a>
     <a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Nuestro Proposito</a>
     <a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Memoria Anual</a>
-    <a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Video Manifiesto</a>
+    <a routerLink="/video" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Video Manifiesto</a>
     <a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Sala de Prensa</a>
   </div>
   <!--navs mobile-->
@@ -27,7 +28,7 @@
       <a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">¿Quienes Somos?</a>
       <a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Nuestro Proposito</a>
       <a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Memoria Anual</a>
-      <a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Video Manifiesto</a>
+      <a routerLink="/video" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Video Manifiesto</a>
       <a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Sala de Prensa</a>
     </div>
   }
