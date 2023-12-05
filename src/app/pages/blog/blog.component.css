@@ -1,0 +1,17 @@
+p{
+  margin-top: 1rem;
+}
+
+.img-container{
+  position: relative;
+
+  &::after{
+    z-index: 100;
+    top:0;
+    position: absolute;
+    width: .5rem;
+    height: 100%;
+    background: red;
+    content:"";
+  }
+}

@@ -1,0 +1,8 @@
+<div class="mt-12 mb-6">
+  <app-header-line [title]="title"/>
+</div>
+<div class="container md:grid-cols-2 mb-24 grid mx-auto xl:grid-cols-4 grid-cols-1  gap-12">
+  @for (post of posts; track post){
+  <app-card [imageSrc]="post.imageSrc" [date]="post.date" [url]="post.id" [title]="post.title"/>
+    }
+</div>
