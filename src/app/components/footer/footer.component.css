@@ -3,12 +3,12 @@
 .container-footer{
     padding: 2.187rem 0.31rem 2.18rem 2.18rem ;
     display: grid;
-    background-color: #f5e7e7;
+    background-color: #FFFFFF;
     grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
     row-gap: 2rem;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .content-fonafe-logo{

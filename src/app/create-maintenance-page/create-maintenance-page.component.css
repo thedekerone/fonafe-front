@@ -1,0 +1,116 @@
+.container-maintenance{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    min-height: 30rem;
+    gap: 2.85rem;
+    background-color: #fff;
+}
+
+.content-img-fito-maintenance{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+.img-fito{
+  width: 450px;
+  height: 450px;
+  padding: 0 15px;
+}
+.content-description-maintenance{
+    width: 670px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px 55px 0px 45px;
+    margin-bottom: 35px;
+}
+.titulo-maintenance{
+    font-weight: 700;
+    font-size: 3rem;
+    margin-bottom:  0.95rem;
+    color: #000000;
+}
+.description-maintenance{
+    font-weight: 500;
+    font-size: 2rem;
+    color: #252525;
+    letter-spacing: 0.05rem;
+}
+.description-maintenance span{
+    background-color: #d7282f;
+    color: #fff;
+    border-radius: 20px;
+    padding: 0 10px;
+}
+
+@media screen and (max-width:45rem) {
+    
+    .container-maintenance{
+        padding: 15px 0;
+        display: grid;
+        background-color: #fff;
+        grid-template-columns: repeat(auto-fit, minmax(350px,1fr));
+        row-gap: 2rem;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        height: auto;
+    
+    }
+    .content-description-maintenance{
+        width: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 15px;
+        margin-bottom: 35px;
+    }
+    .titulo-maintenance{
+        font-size: 1.7rem;
+        text-align: center;
+    }
+    .description-maintenance{
+        font-size: 1rem;
+        text-align: center;
+    }
+    .img-fito{
+        width: 350px;
+        height: 350px;
+        margin-left: 60px;
+    }
+
+}
+
+
+@media screen and (max-width:28.25rem) {
+    
+    .container-maintenance{
+        grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    }
+    .titulo-maintenance{
+        font-size: 1.2rem;
+        text-align: center;
+    }
+    .description-maintenance{
+        font-size: 0.8rem;
+        text-align: center;
+    }
+    .img-fito{
+        width: 200px;
+        height: 200px;
+    }
+    .content-description-maintenance{
+        width: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .img-fito{
+        margin-left: 25px;
+    }
+}
