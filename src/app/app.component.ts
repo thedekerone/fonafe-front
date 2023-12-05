@@ -3,14 +3,13 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from "./components/navbar/navbar.component";
-import { CreateMaintenancePageComponent } from './create-maintenance-page/create-maintenance-page.component';
 
 @Component({
     selector: 'app-root',
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [CommonModule, RouterOutlet, RouterLink, FooterComponent, NavbarComponent,CreateMaintenancePageComponent]
+    imports: [CommonModule, RouterOutlet, RouterLink, FooterComponent, NavbarComponent]
 })
 export class AppComponent {
   title = 'fonafe-front';
