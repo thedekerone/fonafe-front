@@ -9,27 +9,27 @@
   </div>
   <!--boton mobile-->
   <div class="flex flex-row  w-screen bg-gray-500 justify-between py-2 md:hidden">
-    <img class="w-36 pl-8" src="../../../assets/LOGO_BLANCO.svg" alt="Logo">
+    <a routerLink="/"><img class="w-36 pl-8" src="../../../assets/LOGO_BLANCO.svg" alt="Logo"></a>
     <button (click)="handleClick()" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium pr-5 sm:pr-14">
       <i class="fa-solid fa-bars" ></i>
     </button>
   </div>
   <!--navs-->
   <div class="hidden md:flex md:flex-row md:flex-wrap w-screen md:bg-gray-500 md:justify-around ">
-    <a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">¿Quienes Somos?</a>
-    <a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Nuestro Proposito</a>
-    <a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Memoria Anual</a>
+    <a routerLink="/nosotros" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">¿Quienes Somos?</a>
+    <a routerLink="/proposito" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Nuestro Proposito</a>
+    <a routerLink="/memoria" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Memoria Anual</a>
     <a routerLink="/video" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Video Manifiesto</a>
-    <a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Sala de Prensa</a>
+    <a routerLink="/sala" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Sala de Prensa</a>
   </div>
   <!--navs mobile-->
   @if(showMenu){
     <div class="flex flex-col md:hidden bg-gray-500 space-y-1 px-2 pb-3 pt-2  ">
-      <a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">¿Quienes Somos?</a>
-      <a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Nuestro Proposito</a>
-      <a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Memoria Anual</a>
+      <a routerLink="/nosotros" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">¿Quienes Somos?</a>
+      <a routerLink="/proposito" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Nuestro Proposito</a>
+      <a routerLink="/memoria" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Memoria Anual</a>
       <a routerLink="/video" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Video Manifiesto</a>
-      <a class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Sala de Prensa</a>
+      <a routerLink="/sala" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Sala de Prensa</a>
     </div>
   }
 </div>
