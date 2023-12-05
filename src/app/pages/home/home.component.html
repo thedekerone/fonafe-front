@@ -1,2 +1,24 @@
-<p>home works!</p>
-<app-card title="this is a placeholder" [date]="date"></app-card>
+<div class="hero flex justify-center items-center relative">
+  <div class="container text-white text-center px-8">
+    <h1 class="font-bold text-2xl  xl:text-5xl">Bienvenidos al Observatorio Digital de FONAFE</h1>
+    <span class="mx-auto font-medium text-md xl:text-2xl block mt-3 max-w-2xl">aquí encontrarás los indicadores financieros de desempeño de la Corporación y sus empresas</span>
+  </div>
+
+</div>
+<div class="container items-center justify-center mx-auto md:grid-cols-3  xl:grid-cols-6 grid-cols-1 -mt-16 grid gap-10 xl:gap-24">
+  <app-feature-icon/>
+  <app-feature-icon/>
+  <app-feature-icon/>
+  <app-feature-icon/>
+  <app-feature-icon/>
+  <app-feature-icon/>
+</div>
+<div class="mt-12 mb-6">
+  <app-header-line/>
+</div>
+<div class="container md:grid-cols-2 mb-24 grid mx-auto xl:grid-cols-4 grid-cols-1  gap-12">
+  <app-card title="FONAFE organiza evento corporativo de finanzas dirigido a sus..." [date]="date"></app-card>
+  <app-card title="FONAFE organiza evento corporativo de finanzas dirigido a sus..." [date]="date"></app-card>
+  <app-card title="FONAFE organiza evento corporativo de finanzas dirigido a sus..." [date]="date"></app-card>
+  <app-card title="FONAFE organiza evento corporativo de finanzas dirigido a sus..." [date]="date"></app-card>
+</div>

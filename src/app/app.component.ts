@@ -1,23 +1,24 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FooterComponent } from './footer/footer.component';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { FooterComponent } from './components/footer/footer.component';
+import { NavbarComponent } from "./components/navbar/navbar.component";
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [CommonModule, RouterOutlet,RouterLink,FooterComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+    selector: 'app-root',
+    standalone: true,
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css',
+    imports: [CommonModule, RouterOutlet, RouterLink, FooterComponent, NavbarComponent]
 })
 export class AppComponent {
   title = 'fonafe-front';
 
   constructor(private router: Router) {}
 
-  shouldShowNavbar(): boolean {
-    // Obtén la ruta actual y decide si mostrar o no el navbar
+  shouldShowLayout(): boolean {
     const currentRoute = this.router.url;
-    return currentRoute !== '/login'; // Muestra el navbar en todas las rutas excepto '/login'
+    return currentRoute !== '/login';
   }
+
 }
