@@ -1,0 +1,141 @@
+<div class="w-screen">
+  <!--banner-->
+  <div
+    class="relative w-full h-auto flex flex-col md:flex-row px-10 md:px-24 py-10 md:py-24"
+  >
+    <img
+      src="../../../assets/nosotros/FONDO_DE_QUIENES_SOMOS.svg"
+      alt="Imagen de fondo"
+      class="w-full h-full object-cover absolute inset-0"
+    />
+    <!--<div class="bg-white bg-opacity-30 w-full h-full absolute inset-0"></div>-->
+    <div class="relative z-10 w-full md:w-2/3 mr-24 text-left text-gray-700">
+      <h2 class="mb-8 text-4xl font-bold text-red-600">Quienes Somos</h2>
+      <p class="text-justify">
+        Somos el Fondo Nacional de Financiamiento de la Actividad Empresarial
+        del Estado (FONAFE). Iniciamos nuestras actividades en 1999, bajo la Ley
+        N° 27170.
+      </p>
+      <br />
+      <p class="text-justify">
+        Somos una empresa de derecho público adscrita al Ministerio de Economía
+        y Finanzas, encargada de normar y dirigir la actividad empresarial del
+        Estado, representándolo como accionista dentro de las empresas públicas,
+        creadas o por crearse. Asimismo, tenemos como función aprobar el
+        presupuesto consolidado de las Empresas de la Corporación y administrar
+        la renta que producen sus inversiones.
+      </p>
+      <br />
+      <p class="text-justify">
+        Tenemos bajo nuestra rectoría la gestión eficiente de 35 empresas
+        públicas y una entidad incorporada por Ley.
+      </p>
+    </div>
+  </div>
+
+  <!--empresas de la corporacion-->
+  <div class="w-full h-auto py-10 md:py-12 px-5 md:px-10">
+    <fieldset class="w-full border-solid rounded-lg border-2 border-red-600">
+      <legend
+        class="md:text-2xl lg:text-3xl font-bold text-red-600 text-center flex flex-row items-center sm:tracking-widest"
+      >
+        <div class="w-3 h-3 bg-red-600 rounded-full sm:mr-5"></div>
+        EMPRESAS DE LA CORPORACION
+        <div class="w-3 h-3 bg-red-600 rounded-full sm:ml-5"></div>
+      </legend>
+
+      <div
+        class="w-full h-auto flex flex-row px-5 md:px-10 justify-center text-gray-500 font-bold"
+      >
+        <p>35 EMPRESAS Y ESSALUD</p>
+      </div>
+
+      <div
+        class="w-full flex flex-col px-5 md:px-10 py-5 sm:grid sm:grid-cols-2 sm:gap-5 md:grid-cols-3 lg:grid-cols-4"
+      >
+        <app-lstempresas clases="none"
+          title="Centro Corporativo"
+          [list]="['FONAFE']"
+        ></app-lstempresas>
+        <app-lstempresas clases=""
+          title="Distribución eléctrica"
+          [list]="[
+            'ADINELSA S.A.',
+            'ELECTTROCENTRO S.A.',
+            'ELECTRONOROESTE S.A.',
+            'ELECTRONORTE S.A.',
+            'ELECTRO ORIENTE S.A.',
+            'ELECTRO PUNO S.A.',
+            'ELECTRO SUR S.A.',
+            'ELECTRO SUR ESTE S.A.',
+            'ELECTRO UCAYALI S.A.',
+            'HIDRANDINA S.A.',
+            'SEAL S.A.'
+          ]"
+        ></app-lstempresas>
+        <app-lstempresas
+          title="Transporte y Comunicaciones"
+          [list]="[
+            'CORPAC S.A.',
+            'ENAPU S.A.',
+            'SERPOST S.A.',
+            'EDITORA PERÚ S.A.'
+          ]"
+        ></app-lstempresas>
+        <app-lstempresas
+          title="Servicio y Producción"
+          [list]="[
+            'ENACO S.A.',
+            'ESVICSAC S.A.C. **',
+            'SILSA S.A. **'
+          ]"
+        ></app-lstempresas>
+        <app-lstempresas
+          title="Finanzas"
+          [list]="[
+            'AGROBANCO S.A.',
+            'BANCO DE LA NACION',
+            'COFIDE S.A.',
+            'FONDO MIVIVIENDA S.A.'
+          ]"
+        ></app-lstempresas>
+        <app-lstempresas
+          title="Generación Eléctrica"
+          [list]="[
+            'ELECTROPERÚ S.A.',
+            'EGASA',
+            'EGEMSA S.A.',
+            'EGESUR S.A.',
+            'SAN GABÁN S.A.'
+          ]"
+        ></app-lstempresas>
+        <app-lstempresas
+          title="Defensa"
+          [list]="[
+            'FAME S.A.C.',
+            'SIMA PERU S.A.',
+            'SIMA IQUITOS S.R.L.',
+            'SEMAN PERÚ S.A.C.'
+          ]"
+        ></app-lstempresas>
+        <app-lstempresas
+          title="Entidades"
+          [list]="[
+            'ESSALUD*',
+          ]"
+        ></app-lstempresas>
+        <app-lstempresas
+          title="Saneamiento"
+          [list]="['SEDAPAL S.A.']"
+        ></app-lstempresas>
+        <app-lstempresas
+          title="Hidrocarburos y Remediación"
+          [list]="[
+            'PERUPETRO S.A.',
+            'ACTIVOS MINEROS S.A.C.'
+          ]"
+        ></app-lstempresas>
+      </div>
+    </fieldset>
+  </div>
+</div>
