@@ -35,7 +35,7 @@
 
   <!--empresas de la corporacion-->
   <div class="w-full h-auto py-10 md:py-12 px-5 md:px-10">
-    <fieldset class="w-full border-solid rounded-lg border-2 border-red-600">
+    <fieldset class="w-full border-solid rounded-lg sm:rounded-3xl border-2 border-red-600">
       <legend
         class="md:text-2xl lg:text-3xl font-bold text-red-600 text-center flex flex-row items-center sm:tracking-widest"
       >
@@ -53,11 +53,14 @@
       <div
         class="w-full flex flex-col px-5 md:px-10 py-5 sm:grid sm:grid-cols-2 sm:gap-5 md:grid-cols-3 lg:grid-cols-4"
       >
-        <app-lstempresas clases="none"
+        <app-lstempresas
+          url="../../../assets/nosotros/icons/Corporación.svg"
           title="Centro Corporativo"
           [list]="['FONAFE']"
         ></app-lstempresas>
-        <app-lstempresas clases=""
+        <div class="sm:row-span-2">
+          <app-lstempresas
+          url="../../../assets/nosotros/icons/Electrica.svg"
           title="Distribución eléctrica"
           [list]="[
             'ADINELSA S.A.',
@@ -73,7 +76,9 @@
             'SEAL S.A.'
           ]"
         ></app-lstempresas>
+        </div>
         <app-lstempresas
+        url="../../../assets/nosotros/icons/Transporte y comunicaciones.svg"
           title="Transporte y Comunicaciones"
           [list]="[
             'CORPAC S.A.',
@@ -83,6 +88,7 @@
           ]"
         ></app-lstempresas>
         <app-lstempresas
+        url="../../../assets/nosotros/icons/Servicios y producción.svg"
           title="Servicio y Producción"
           [list]="[
             'ENACO S.A.',
@@ -91,6 +97,7 @@
           ]"
         ></app-lstempresas>
         <app-lstempresas
+          url="../../../assets/nosotros/icons/Finanzas.svg"
           title="Finanzas"
           [list]="[
             'AGROBANCO S.A.',
@@ -100,6 +107,29 @@
           ]"
         ></app-lstempresas>
         <app-lstempresas
+        url="../../../assets/nosotros/icons/Defensa.svg"
+          title="Defensa"
+          [list]="[
+            'FAME S.A.C.',
+            'SIMA PERU S.A.',
+            'SIMA IQUITOS S.R.L.',
+            'SEMAN PERÚ S.A.C.'
+          ]"
+        ></app-lstempresas>
+        <app-lstempresas
+        url="../../../assets/nosotros/icons/Entidades.svg"
+          title="Entidades"
+          [list]="[
+            'ESSALUD*',
+          ]"
+        ></app-lstempresas>
+        <app-lstempresas
+        url="../../../assets/nosotros/icons/Saneamiento.svg"
+          title="Saneamiento"
+          [list]="['SEDAPAL S.A.']"
+        ></app-lstempresas>
+        <app-lstempresas
+        url="../../../assets/nosotros/icons/Electrica.svg"
           title="Generación Eléctrica"
           [list]="[
             'ELECTROPERÚ S.A.',
@@ -110,25 +140,7 @@
           ]"
         ></app-lstempresas>
         <app-lstempresas
-          title="Defensa"
-          [list]="[
-            'FAME S.A.C.',
-            'SIMA PERU S.A.',
-            'SIMA IQUITOS S.R.L.',
-            'SEMAN PERÚ S.A.C.'
-          ]"
-        ></app-lstempresas>
-        <app-lstempresas
-          title="Entidades"
-          [list]="[
-            'ESSALUD*',
-          ]"
-        ></app-lstempresas>
-        <app-lstempresas
-          title="Saneamiento"
-          [list]="['SEDAPAL S.A.']"
-        ></app-lstempresas>
-        <app-lstempresas
+        url="../../../assets/nosotros/icons/Hidrocarburos.svg"
           title="Hidrocarburos y Remediación"
           [list]="[
             'PERUPETRO S.A.',
@@ -137,5 +149,9 @@
         ></app-lstempresas>
       </div>
     </fieldset>
+    <div class="w-full h-auto px-5 md:px-10 text-gray-500">
+      <p>* Incorporada al ámbito del FONAFE por disposición señalada en la Ley de Presupuesto del Sector Público para el año fiscal 2011, Ley 29626</p>
+      <p>** FONAFE tiene propiedad indirecta</p>
+    </div>
   </div>
 </div>

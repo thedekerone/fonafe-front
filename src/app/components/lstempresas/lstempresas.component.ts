@@ -1,3 +1,4 @@
+
 import { Component, Input, } from '@angular/core';
 
 @Component({
@@ -10,5 +11,6 @@ import { Component, Input, } from '@angular/core';
 export class LstempresasComponent {
   @Input() title: string = '';
   @Input() list: string[] = [];
+  @Input() url: string = '';
 }
 
