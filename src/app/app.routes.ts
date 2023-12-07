@@ -6,13 +6,17 @@ import { VideoComponent } from './pages/video/video.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { CreateMaintenancePageComponent } from './pages/create-maintenance-page/create-maintenance-page.component';
 import { CreatePostComponent } from './pages/blog/create/create-post.component';
+import { PropositoComponent } from './pages/proposito/proposito.component';
+import { MemoriaComponent } from './pages/memoria/memoria.component';
 
 export const routes: Routes = [
-  {path: '', redirectTo:'home', pathMatch: 'full'},
+  {path:'', redirectTo:'home', pathMatch: 'full'},
   {path:'login', component: LoginpageComponent},
   {path:'home', component: HomeComponent},
   {path:'video', component: VideoComponent},
-  {path: 'nosotros', component: NosotrosComponent},
+  {path:'nosotros', component: NosotrosComponent},
+  {path:'proposito', component: PropositoComponent},
+  {path:'memoria', component: MemoriaComponent},
   {path:'sala-de-prensa', component: BlogComponent},
   {path:'sala-de-prensa/crear', component: CreatePostComponent},
   {path:'**', component: CreateMaintenancePageComponent},
