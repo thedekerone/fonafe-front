@@ -1,9 +1,9 @@
 <div class="container w-full mx-auto max-w-xs">
   <div class="aspect-square relative group text-red-100">
-    <img src="../../../assets/BOTONES/EMPRESAS FINANCIERAS.svg" class="w-full absolute left-0 top-0 h-full object-cover"
+    <img [src]="src" class="w-full scale-110 absolute left-0 top-0 h-full object-cover"
       alt="ficha tecnica">
-    <img src="../../../assets/BOTONES/EMPRESAS FINANCIERAS ROJO.svg"
-      class="w-full  group-hover:transition-opacity opacity-0 absolute h-full object-cover group-hover:opacity-100 scale-110" alt="ficha tecnica">
+    <img [src]="hoverSrc"
+      class="w-full  group-hover:transition-opacity scale-110 opacity-0 absolute h-full object-cover group-hover:opacity-100" alt="ficha tecnica">
   </div>
   <header class="text-center font-semibold text-xl">
     Empresas Financieras
