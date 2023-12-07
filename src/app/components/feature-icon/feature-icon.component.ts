@@ -10,4 +10,5 @@ import { Component, Input } from '@angular/core';
 export class FeatureIconComponent {
   @Input() src = ""
   @Input() hoverSrc = ""
+  @Input() title = ""
 }
