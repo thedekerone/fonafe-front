@@ -5,6 +5,7 @@ import { NosotrosComponent } from './pages/nosotros/nosotros.component';
 import { VideoComponent } from './pages/video/video.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { CreateMaintenancePageComponent } from './pages/create-maintenance-page/create-maintenance-page.component';
+import { CreatePostComponent } from './pages/blog/create/create-post.component';
 
 export const routes: Routes = [
   {path: '', redirectTo:'home', pathMatch: 'full'},
@@ -13,5 +14,6 @@ export const routes: Routes = [
   {path:'video', component: VideoComponent},
   {path: 'nosotros', component: NosotrosComponent},
   {path:'sala-de-prensa', component: BlogComponent},
+  {path:'sala-de-prensa/crear', component: CreatePostComponent},
   {path:'**', component: CreateMaintenancePageComponent},
 ];
