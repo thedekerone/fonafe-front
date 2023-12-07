@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-feature-icon',
@@ -8,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrl: './feature-icon.component.css'
 })
 export class FeatureIconComponent {
-
+  @Input() src = ""
+  @Input() hoverSrc = ""
 }

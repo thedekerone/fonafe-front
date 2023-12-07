@@ -1,0 +1,11 @@
+<div class="w-full h-auto mb-5 sm:mb-0" >
+  <div class="flex flex-row bg-gray-600 hover:bg-red-600 items-center text-gray-200 px-3 py-1 rounded-lg">
+    <img src="{{ url }}" alt="icon" class="w-5 mr-2">
+    <p>{{ title }}</p>
+  </div>
+  <ol class="list-decimal pl-8 text-gray-600">
+    @for (item of list; track $index) {
+      <li>{{ item }}</li>
+    }
+  </ol>
+</div>

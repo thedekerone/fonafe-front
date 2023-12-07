@@ -3,7 +3,7 @@
 .container-footer{
     padding: 2.187rem 0.31rem 2.18rem 2.18rem ;
     display: grid;
-    background-color: #FFFFFF;
+    background-color: #d4d4d4;
     grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
     row-gap: 2rem;
     flex-wrap: wrap;
@@ -82,14 +82,14 @@
 }
 
 @media screen and (max-width:45rem) {
-    
+
     .content-mapa-sitio-footer{
         padding: 0rem;
     }
 }
 
 @media screen and (max-width:27.25rem) {
-    
+
     .content-fonafe-logo img{
         width: 15.62rem;
         height: 3.12rem;
