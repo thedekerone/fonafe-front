@@ -14,4 +14,9 @@ p{
     background: red;
     content:"";
   }
+
+  .text-color-gray {
+    color: #6B7280; /* O el tono de gris que prefieras */
+  }
+  
 }
