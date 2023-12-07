@@ -1,20 +1,16 @@
 import { Component } from '@angular/core';
-import { CardComponent } from '../../components/blog/card/card.component';
-import { FeatureIconComponent } from '../../components/feature-icon/feature-icon.component';
-import { HeaderLineComponent } from '../../components/blog/header-line/header-line.component';
-import { RouterLink } from '@angular/router';
-import { Post } from '../../models/post';
 import { CardListComponent } from '../../components/blog/card-list/card-list.component';
+import { Post } from '../../models/post';
+import { HeaderLineComponent } from '../../components/blog/header-line/header-line.component';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-blog',
   standalone: true,
-  imports: [CardListComponent, RouterLink, FeatureIconComponent, HeaderLineComponent],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  imports: [CardListComponent, HeaderLineComponent],
+  templateUrl: './blog.component.html',
+  styleUrl: './blog.component.css'
 })
-export class HomeComponent {
-  date: Date = new Date()
+export class BlogComponent {
   posts: Post[] = [
     {
       title: "Innovating the Future: The Electrifying Journey of VoltEdge Inc.",
