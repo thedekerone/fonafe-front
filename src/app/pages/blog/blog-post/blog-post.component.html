@@ -1,9 +1,8 @@
-this is a test {{id}}
 <article class="container px-3 xl:px-8 mx-auto my-12">
   <header>
-    <h2 class="font-bold">{{post.category}}</h2>
+    <h2 class="font-bold">{{post?.category}}</h2>
     <h1 class="text-3xl font-bold my-4">
-      {{post.title}}
+      {{post?.title}}
     </h1>
   </header>
   <main>
@@ -11,10 +10,10 @@ this is a test {{id}}
       <figure class="img-container">
         <img src="../../../assets/IMAGEN.svg" alt="text" />
       </figure>
-      <span class="text-right block mt-3">Actualizado {{post.date | date}}</span>
+      <span class="text-right block mt-3">Actualizado {{post?.date | date}}</span>
     </div>
     <div class="pt-8">
-      @for (param of post.content?.split("\n"); track param) {
+      @for (param of post?.content?.split("\n"); track param) {
         <p>
           {{param}}
         </p>
