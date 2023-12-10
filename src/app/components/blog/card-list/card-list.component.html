@@ -3,6 +3,6 @@
 </div>
 <div class="container md:grid-cols-2 mb-24 grid mx-auto xl:grid-cols-4 grid-cols-1  gap-12">
   @for (post of posts; track post){
-  <app-card [imageSrc]="post.imageSrc" [date]="post.date" [url]="post.id" [title]="post.title"/>
+  <app-card [id]="post.id" [imageSrc]="post.imageSrc" [date]="post.date" [url]="post.id" [title]="post.title"/>
     }
 </div>
