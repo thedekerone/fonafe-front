@@ -8,7 +8,7 @@
   <main>
     <div>
       <figure class="img-container">
-        <img src="../../../assets/IMAGEN.svg" alt="text" />
+        <img [src]="post?.imageUrl ?? '../../../../assets/IMAGEN.svg'" alt="text" />
       </figure>
       <span class="text-right block mt-3">Actualizado {{post?.updatedDate | date}}</span>
     </div>

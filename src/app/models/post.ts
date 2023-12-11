@@ -2,7 +2,7 @@ export type Post = {
   title: string;
   category?: string;
   description?: string;
-  imageSrc: string;
+  imageUrl: string;
   updatedDate: Date;
   id: string;
   content?:string
