@@ -12,7 +12,7 @@ import { BlogPostComponent } from './pages/blog/blog-post/blog-post.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'login', component: LoginpageComponent },
+ /* { path: 'login', component: LoginpageComponent },
   { path: 'home', component: HomeComponent },
   { path: 'video', component: VideoComponent },
   { path: 'nosotros', component: NosotrosComponent },
@@ -20,6 +20,6 @@ export const routes: Routes = [
   { path: 'memoria', component: MemoriaComponent },
   { path: 'sala-de-prensa/crear', component: CreatePostComponent },
   { path: 'sala-de-prensa/:id', component: BlogPostComponent },
-  { path: 'sala-de-prensa', component: BlogComponent},
+  { path: 'sala-de-prensa', component: BlogComponent}, */
   { path: '**', component: CreateMaintenancePageComponent },
 ];

@@ -1,5 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { environment } from '../../environments/environment.development';
+import { Post } from '../models/post';
 
 @Injectable({
   providedIn: 'root'
@@ -40,12 +43,11 @@ export class PostService {
     }
   ];
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getAllPosts(): Observable<any[]> {
-    return of(this.mockPosts);
+  getAllPosts():Observable<Post[]> {
+    return this.http.get<Post[]>(environment.serverUrl + "/Blog")
   }
-
 
   getPostById(id: string): Observable<any> {
     const post = this.mockPosts.find(p => p.id === id);

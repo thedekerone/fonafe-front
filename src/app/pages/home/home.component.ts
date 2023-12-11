@@ -22,6 +22,8 @@ export class HomeComponent {
     this.postService.getAllPosts().subscribe(data => {
       this.posts = data;
       console.log(data)
+    },(error)=>{
+      console.log(error)
     });
   }
 
