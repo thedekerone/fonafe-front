@@ -5,6 +5,7 @@ import { RouterLink } from '@angular/router';
 import { Post } from '../../models/post';
 import { CardListComponent } from '../../components/blog/card-list/card-list.component';
 import { PostService } from '../../services/post-service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -15,15 +16,20 @@ import { PostService } from '../../services/post-service';
 })
 export class HomeComponent {
   posts: Post[] = [];
-
-  constructor(private postService: PostService) { }
+  isLoggedIn= false
+  constructor(private postService: PostService, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.postService.getAllPosts().subscribe(data => {
       this.posts = data;
       console.log(data)
-    },(error)=>{
+    }, (error) => {
       console.log(error)
+    });
+    this.authService.user.subscribe(user => {
+      this.isLoggedIn = !!user;
+      console.log(user)
+      // Additional logic based on authentication state
     });
   }
 

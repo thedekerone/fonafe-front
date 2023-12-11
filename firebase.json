@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "fonafe-front",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

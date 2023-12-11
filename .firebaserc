@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "fonafe-back": {
+      "hosting": {
+        "fonafe-front": [
+          "fonafe-back"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "fonafe-back"
+  }
+}

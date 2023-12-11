@@ -1,52 +1,54 @@
+
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
+import { User, onAuthStateChanged } from 'firebase/auth';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private loginUrl = 'https://your-api-url.com/login'; // Replace with your API URL
+  private authState = new BehaviorSubject<User | null>(null);
 
-  constructor(private http: HttpClient) {}
-
-  login(email: string, password: string): Observable<any> {
-    return this.http.post(this.loginUrl, { email, password }).pipe(
-      map(response => {
-        // If login is successful, you might want to store the token
-        // localStorage.setItem('authToken', response.token);
-        return response;
-      }),
-      catchError(this.handleError)
-    );
+  constructor(private auth: Auth) {
+    onAuthStateChanged(this.auth, (user) => {
+      this.authState.next(user);
+    });
+  }
+  get user() {
+    return this.authState.asObservable();
   }
 
-  // Implement a method for logging out if needed
-  logout() {
-    // Remove the token from storage
-    // localStorage.removeItem('authToken');
-  }
-
-  // Check if the user is logged in (based on the token)
-  isLoggedIn(): boolean {
-    const token = localStorage.getItem('authToken');
-    // Here you should add logic to check if the token is valid
-    return !!token;
-  }
-
-  // Handle any errors from the API
-  private handleError(error: any) {
-    // You can add more sophisticated error handling here
-    let errorMessage = 'An unknown error occurred!';
-    if (error.error instanceof ErrorEvent) {
-      // Client-side errors
-      errorMessage = `Error: ${error.error.message}`;
-    } else {
-      // Server-side errors
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+  // Sign up with email and password
+  async signUp(email: string, password: string) {
+    try {
+      return await createUserWithEmailAndPassword(this.auth, email, password);
+    } catch (error) {
+      // Handle errors here
+      console.error('Error during sign up:', error);
+      throw error;
     }
-    return throwError(()=>errorMessage);
+  }
+
+  // Sign in with email and password
+  async signIn(email: string, password: string) {
+    try {
+      return await signInWithEmailAndPassword(this.auth, email, password);
+    } catch (error) {
+      // Handle errors here
+      console.error('Error during sign in:', error);
+      throw error;
+    }
+  }
+
+  // Sign out
+  async signOut() {
+    try {
+      await signOut(this.auth);
+    } catch (error) {
+      // Handle errors here
+      console.error('Error during sign out:', error);
+      throw error;
+    }
   }
 }
-

@@ -94,6 +94,23 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "fonafe-front:build:production",
+              "serveTarget": "fonafe-front:serve:production"
+            },
+            "development": {
+              "buildTarget": "fonafe-front:build:development",
+              "serveTarget": "fonafe-front:serve:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }
