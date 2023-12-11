@@ -10,7 +10,7 @@
       <figure class="img-container">
         <img src="../../../assets/IMAGEN.svg" alt="text" />
       </figure>
-      <span class="text-right block mt-3">Actualizado {{post?.date | date}}</span>
+      <span class="text-right block mt-3">Actualizado {{post?.updatedDate | date}}</span>
     </div>
     <div class="pt-8">
       @for (param of post?.content?.split("\n"); track param) {

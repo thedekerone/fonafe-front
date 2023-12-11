@@ -1,4 +1,6 @@
 export const environment = {
+  serverUrl: "https://localhost:5001/api",
+  firebaseConfig:  {
     apiKey: "AIzaSyCIEHXo-nM0GkhVkyb3P-0QxxA_OpcTbQ8",
     authDomain: "fonafe-back.firebaseapp.com",
     databaseURL: "https://fonafe-back-default-rtdb.firebaseio.com",
@@ -8,3 +10,4 @@ export const environment = {
     appId: "1:927249909354:web:74ee0fbde8b38c9b016c13",
     measurementId: "G-X1HZDDBRNH"
   }
+};

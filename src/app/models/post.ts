@@ -3,7 +3,7 @@ export type Post = {
   category?: string;
   description?: string;
   imageSrc: string;
-  date: Date;
+  updatedDate: Date;
   id: string;
   content?:string
 }

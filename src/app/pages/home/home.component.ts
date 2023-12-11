@@ -21,7 +21,7 @@ export class HomeComponent {
 
   ngOnInit(): void {
     this.postService.getAllPosts().subscribe(data => {
-      this.posts = data;
+      this.posts = data.slice(0,4);
       console.log(data)
     }, (error) => {
       console.log(error)
