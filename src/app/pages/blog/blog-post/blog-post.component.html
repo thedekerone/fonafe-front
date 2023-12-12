@@ -1,9 +1,11 @@
 <article class="container px-3 xl:px-8 mx-auto my-12">
   <header>
     <h2 class="font-bold">{{post?.category}}</h2>
-    <h1 class="text-3xl font-bold my-4">
-      {{post?.title}}
-    </h1>
+    <h1 class="text-3xl font-bold my-4 flex items-center gap-5 ">
+      {{post?.title}} <a [href]="'/sala-de-prensa/editar/' + post?.id"> <img
+          src="https://us.123rf.com/450wm/andrerosi/andrerosi2102/andrerosi210200338/164406397-editar-icono-de-vector-editar-icono-de-documento-editar-icono-de-texto-l%C3%A1piz-inscribirse.jpg"
+          class="w-10" alt="icono editar">
+      </a> </h1>
   </header>
   <main>
     <div>
@@ -12,13 +14,7 @@
       </figure>
       <span class="text-right block mt-3">Actualizado {{post?.updatedDate | date}}</span>
     </div>
-    <div class="pt-8">
-      @for (param of post?.content?.split("\n"); track param) {
-        <p>
-          {{param}}
-        </p>
-      }
-    </div>
+    <div class="pt-8" [innerHTML]="post?.content ?? '' | linkify"></div>
+
   </main>
 </article>
-

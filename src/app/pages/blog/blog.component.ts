@@ -3,22 +3,38 @@ import { CardListComponent } from '../../components/blog/card-list/card-list.com
 import { Post } from '../../models/post';
 import { HeaderLineComponent } from '../../components/blog/header-line/header-line.component';
 import { PostService } from '../../services/post-service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-blog',
   standalone: true,
-  imports: [CardListComponent, HeaderLineComponent],
+  imports: [CardListComponent,FormsModule, HeaderLineComponent],
   templateUrl: './blog.component.html',
   styleUrl: './blog.component.css'
 })
 export class BlogComponent {
-  posts: Post[] = []
+  posts: Post[] = [];
+  filteredPosts: Post[] = [];
+  searchTerm: string = '';
 
   constructor(private postService: PostService){}
 
   ngOnInit(){
     this.postService.getAllPosts().subscribe(data=>{
-      this.posts = data
-    })
+      this.posts = data;
+      this.filteredPosts = data;
+    });
+  }
+
+  search(): void {
+    if (this.searchTerm) {
+      this.filteredPosts = this.posts.filter(post =>
+        post.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        post?.content?.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    } else {
+      this.filteredPosts = this.posts;
+    }
   }
 }
+

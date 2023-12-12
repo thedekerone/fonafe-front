@@ -3,11 +3,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from '../../../models/post';
 import { DatePipe } from '@angular/common';
 import { PostService } from '../../../services/post-service';
+import { LinkifyPipe } from '../../../utils/linkify.pipe';
 
 @Component({
   selector: 'app-blog-post',
   standalone: true,
-  imports: [DatePipe],
+  imports: [DatePipe, LinkifyPipe],
   templateUrl: './blog-post.component.html',
   styleUrl: './blog-post.component.css'
 })

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from '../../../models/post';
 import { PostService } from '../../../services/post-service';
 
@@ -14,20 +14,35 @@ import { PostService } from '../../../services/post-service';
 export class EditPostComponent implements OnInit {
   postForm: FormGroup;
   postId: string = ""; // Assuming post IDs are strings
-
+  imgBase64 = ""
   constructor(
     private formBuilder: FormBuilder,
     private postService: PostService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {
     this.postForm = this.formBuilder.group({
       title: ['', Validators.required],
       content: ['', Validators.required],
-      img: [null], // Validators can be added if required
-      date: ['', Validators.required],
-      label: ['']
+      updatedDate: ['', Validators.required],
+      category: ['']
     });
   }
+
+
+handleFileInput(files: Event) {
+    let fileToUpload = (files.currentTarget as HTMLInputElement)?.files?.item(0);
+    if(!fileToUpload) return
+    let reader = new FileReader();
+
+    reader.onload = (event: any) => {
+     this.imgBase64 = event.target.result;
+
+    };
+
+    fileToUpload && reader.readAsDataURL(fileToUpload);
+}
+
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
@@ -39,9 +54,12 @@ export class EditPostComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.postForm.value)
     if (this.postForm.valid) {
-      console.log('Form Submitted', this.postForm.value);
-      // Update logic here, e.g., this.postService.updatePost(this.postId, this.postForm.value);
+      this.postService.updatePost(this.postId, {...this.postForm.value, imageUrl: this.imgBase64}).subscribe(res=>{
+        console.log(res)
+        this.router.navigate(["/sala-de-prensa"])
+      })
     } else {
       console.error('Form is not valid');
     }

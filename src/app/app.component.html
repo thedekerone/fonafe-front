@@ -1,8 +1,12 @@
-@if(shouldShowLayout()){
+<div class="flex flex-col min-h-screen">
+  @if(shouldShowLayout()){
   <app-navbar></app-navbar>
-}
-<router-outlet></router-outlet>
+  }
+  <div class="flex-grow">
+    <router-outlet></router-outlet>
+  </div>
 
-@if(shouldShowLayout()){
+  @if(shouldShowLayout()){
   <app-footer></app-footer>
-}
+  }
+</div>

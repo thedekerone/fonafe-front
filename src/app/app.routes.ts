@@ -10,6 +10,7 @@ import { PropositoComponent } from './pages/proposito/proposito.component';
 import { MemoriaComponent } from './pages/memoria/memoria.component';
 import { BlogPostComponent } from './pages/blog/blog-post/blog-post.component';
 import { authGuard, reverseAuthGuard } from './auth.guard';
+import { EditPostComponent } from './pages/blog/edit-post/edit-post.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -20,6 +21,7 @@ export const routes: Routes = [
   { path: 'proposito', component: PropositoComponent },
   { path: 'memoria', component: MemoriaComponent },
   { path: 'sala-de-prensa/crear', component: CreatePostComponent, canActivate: [authGuard] },
+  { path: 'sala-de-prensa/editar/:id', component: EditPostComponent },
   { path: 'sala-de-prensa/:id', component: BlogPostComponent },
   { path: 'sala-de-prensa', component: BlogComponent},
   { path: '**', component: CreateMaintenancePageComponent },

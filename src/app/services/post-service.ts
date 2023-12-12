@@ -10,7 +10,7 @@ import { Post } from '../models/post';
 export class PostService {
   constructor(private http: HttpClient) { }
 
-  getAllPosts():Observable<Post[]> {
+  getAllPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(environment.serverUrl + "/Blog")
   }
 
@@ -18,17 +18,13 @@ export class PostService {
     return this.http.get<Post>(environment.serverUrl + "/Blog/" + id)
   }
 
-  createPost(post :Post){
-    return this.http.post<Post>(environment.serverUrl + "/Blog/", post )
+  createPost(post: Post) {
+    return this.http.post<Post>(environment.serverUrl + "/Blog/", post)
   }
 
-  /**updatePost(id: string, postData: any): Observable<any> {
-    const index = this.mockPosts.findIndex(p => p.id === id);
-    if (index !== -1) {
-      this.mockPosts[index] = { ...this.mockPosts[index], ...postData };
-    }
-    return of({ success: true });
-  }**/
+  updatePost(id: string, postData: Partial<Post>): Observable<any> {
+    return this.http.put<Post>(environment.serverUrl + "/Blog/" + id, postData)
+  }
 
 }
 
