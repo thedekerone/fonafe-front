@@ -9,7 +9,7 @@
     <h2 class="font-bold">{{post?.category}}</h2>
     <h1 class="text-3xl font-bold my-4 flex items-center gap-5">
       {{post?.title}}
-
+      @if(userId.length > 0){
       <a [href]="'/sala-de-prensa/editar/' + post?.id" class="flex items-center"> <img
         src="https://us.123rf.com/450wm/andrerosi/andrerosi2102/andrerosi210200338/164406397-editar-icono-de-vector-editar-icono-de-documento-editar-icono-de-texto-l%C3%A1piz-inscribirse.jpg"
         class="w-10" alt="boton editar"> <span class="text-sm">Editar</span>
@@ -19,13 +19,16 @@
         src="https://cdn-icons-png.flaticon.com/512/6861/6861362.png"
         class="w-5" alt="boton eliminar"> <span class="text-sm text-red-400">Eliminar</span>
       </button>
+      }
+
+
 
     </h1>
   </header>
   <main>
     <div>
       <figure class="img-container">
-        <img [src]="post?.imageUrl ?? '../../../../assets/IMAGEN.svg'" alt="text" />
+        <img class="w-full" [src]="post?.imageUrl ?? '../../../../assets/IMAGEN.svg'" alt="text" />
       </figure>
       <span class="text-right block mt-3">Actualizado {{post?.updatedDate | date}}</span>
     </div>

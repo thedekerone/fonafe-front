@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, map, of } from 'rxjs';
 import { environment } from '../../environments/environment.development';
 import { Post } from '../models/post';
 
@@ -13,7 +13,12 @@ export class PostService {
 
 
   getAllPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(this.blogEndpoint)
+    return this.http.get<Post[]>(this.blogEndpoint).pipe(
+      map(posts => posts.sort((a, b) => {
+        // Assuming 'date' is a field in your Post model and it's a Date or timestamp
+        return new Date(b.updatedDate).getTime() - new Date(a.updatedDate).getTime();
+      }))
+    );
   }
 
   getPostById(id: string): Observable<any> {

@@ -21,7 +21,7 @@ export const routes: Routes = [
   { path: 'proposito', component: PropositoComponent },
   { path: 'memoria', component: MemoriaComponent },
   { path: 'sala-de-prensa/crear', component: CreatePostComponent, canActivate: [authGuard] },
-  { path: 'sala-de-prensa/editar/:id', component: EditPostComponent },
+  { path: 'sala-de-prensa/editar/:id', component: EditPostComponent, canActivate: [authGuard]},
   { path: 'sala-de-prensa/:id', component: BlogPostComponent },
   { path: 'sala-de-prensa', component: BlogComponent},
   { path: '**', component: CreateMaintenancePageComponent },

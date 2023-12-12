@@ -1,5 +1,5 @@
 @if(loading){
-<div class="my-24 block lg:my-36">
+<div class="my-24 lg:my-48">
   <app-loading />
 </div>
 }
@@ -16,10 +16,12 @@
       </button>
     </div>
 
+    @if(userId.length > 0){
     <a href="/sala-de-prensa/crear/"
       class="bg-red-500 text-white font-semibold p-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300 focus:ring-opacity-50">
       Crear sala de prensa
     </a>
+    }
 
   </div>
 

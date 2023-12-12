@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from '../../../models/post';
 import { PostService } from '../../../services/post-service';
 import { LoadingComponent } from '../../../components/loading/loading.component';
 import { ButtonComponent } from '../../../components/button/button.component';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-edit-post',
@@ -17,13 +18,15 @@ export class EditPostComponent implements OnInit {
   postForm: FormGroup;
   loadingButton = false
   loading = false;
+  userId = ""
   postId: string = ""; // Assuming post IDs are strings
   imgBase64 = ""
   constructor(
     private formBuilder: FormBuilder,
     private postService: PostService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {
     this.postForm = this.formBuilder.group({
       title: ['', Validators.required],
@@ -50,6 +53,9 @@ export class EditPostComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = true
+    this.authService.user.subscribe(res=>{
+      this.userId = res?.uid ?? ""
+    })
     this.activatedRoute.params.subscribe(params => {
       this.postId = params['id'];
       this.postService.getPostById(this.postId).subscribe((postData: Post) => {
@@ -66,7 +72,7 @@ export class EditPostComponent implements OnInit {
     console.log(this.postForm.value)
     if (this.postForm.valid) {
       this.loadingButton = true
-      this.postService.updatePost(this.postId, { ...this.postForm.value, imageUrl: this.imgBase64 }).subscribe(res => {
+      this.postService.updatePost(this.postId, { ...this.postForm.value, imageUrl: this.imgBase64, userId: this.userId }).subscribe(res => {
         console.log(res)
         this.loadingButton = false
         this.router.navigate(["/sala-de-prensa"])

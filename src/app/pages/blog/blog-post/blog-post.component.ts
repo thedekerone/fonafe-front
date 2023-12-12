@@ -5,6 +5,7 @@ import { DatePipe } from '@angular/common';
 import { PostService } from '../../../services/post-service';
 import { LinkifyPipe } from '../../../utils/linkify.pipe';
 import { LoadingComponent } from '../../../components/loading/loading.component';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-blog-post',
@@ -17,11 +18,13 @@ export class BlogPostComponent implements OnInit {
   id: string = "";
   loading = false
   post: Post | null = null; // Initialize post as null or undefined
+  userId = ""
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private postService: PostService // Inject PostService
+    private postService: PostService,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
@@ -30,11 +33,15 @@ export class BlogPostComponent implements OnInit {
       this.id = params.get('id') || "";
       this.getPost(this.id);
     });
+
+    this.authService.user.subscribe(res => {
+      this.userId = res?.uid ?? ""
+    })
   }
 
-  deletePost(id?:string){
-    if(!id) return
-    this.postService.deletePost(id).subscribe(res=>{
+  deletePost(id?: string) {
+    if (!id) return
+    this.postService.deletePost(id).subscribe(res => {
       console.log(res)
       this.router.navigate(["/sala-de-prensa"])
     })

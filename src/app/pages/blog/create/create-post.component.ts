@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { PostService } from '../../../services/post-service';
 import { Router } from '@angular/router';
 import { ButtonComponent } from '../../../components/button/button.component';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-create-post',
@@ -15,13 +16,21 @@ export class CreatePostComponent {
   loading = false
   postForm: FormGroup;
   imgBase64: string = ""
-  constructor(private formBuilder: FormBuilder, private router: Router, private postService: PostService) {
+  userId = ""
+  constructor(private formBuilder: FormBuilder, private router: Router, private postService: PostService, private authService: AuthService) {
     this.postForm = this.formBuilder.group({
       title: ['', Validators.required],
       content: ['', Validators.required],
       updatedDate: ['', Validators.required],
       category: ['', Validators.required]
     });
+  }
+
+
+  ngOnInit(){
+    this.authService.user.subscribe(res=>{
+      this.userId = res?.uid ?? ""
+    })
   }
 
   handleFileInput(files: Event) {
@@ -41,7 +50,7 @@ export class CreatePostComponent {
     if (this.postForm.valid) {
       this.loading = true
       console.log('Form Submitted', this.postForm.value);
-      this.postService.createPost({ ...this.postForm.value, imageUrl: this.imgBase64 }).subscribe(res => {
+      this.postService.createPost({ ...this.postForm.value, imageUrl: this.imgBase64, userId: this.userId}).subscribe(res => {
         this.router.navigate(["/sala-de-prensa"])
         this.loading = false
         console.log(res)
