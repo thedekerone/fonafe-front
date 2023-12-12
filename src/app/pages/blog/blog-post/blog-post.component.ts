@@ -4,16 +4,18 @@ import { Post } from '../../../models/post';
 import { DatePipe } from '@angular/common';
 import { PostService } from '../../../services/post-service';
 import { LinkifyPipe } from '../../../utils/linkify.pipe';
+import { LoadingComponent } from '../../../components/loading/loading.component';
 
 @Component({
   selector: 'app-blog-post',
   standalone: true,
-  imports: [DatePipe, LinkifyPipe],
+  imports: [DatePipe, LinkifyPipe, LoadingComponent],
   templateUrl: './blog-post.component.html',
   styleUrl: './blog-post.component.css'
 })
 export class BlogPostComponent implements OnInit {
   id: string = "";
+  loading = false
   post: Post | null = null; // Initialize post as null or undefined
 
   constructor(
@@ -23,10 +25,19 @@ export class BlogPostComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.loading = true
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id') || "";
       this.getPost(this.id);
     });
+  }
+
+  deletePost(id?:string){
+    if(!id) return
+    this.postService.deletePost(id).subscribe(res=>{
+      console.log(res)
+      this.router.navigate(["/sala-de-prensa"])
+    })
   }
 
   getPost(id: string): void {
@@ -37,6 +48,7 @@ export class BlogPostComponent implements OnInit {
 
     this.postService.getPostById(id).subscribe(postData => {
       if (postData) {
+        this.loading = false
         this.post = postData;
       } else {
         // Handle the case where post is not found
