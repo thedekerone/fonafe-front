@@ -37,7 +37,8 @@
             <input type="password" placeholder="Contraseña" name="password" ngModel required class="input-field border-2 border-gray-200 rounded-full w-56 xl:w-80 pl-10 py-2 pr-2 focus:outline-none" />
           </div>
           <div class="text-gray-600 text-sm mb-4 cursor-pointer">¿Has olvidado la contraseña?</div>
-          <button type="submit" class="bg-red-600 text-white rounded-full px-16 py-2 focus:outline-none" [disabled]="!loginForm.valid">INICIAR SESIÓN</button>
+
+          <button type="submit" class="bg-red-600 text-white rounded-full px-16 py-2 focus:outline-none" [disabled]="!loginForm.valid || loading">INICIAR SESIÓN</button>
         </form>
       </div>
     </div>
