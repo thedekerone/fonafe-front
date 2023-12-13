@@ -6,16 +6,18 @@ import { PostService } from '../../../services/post-service';
 import { LinkifyPipe } from '../../../utils/linkify.pipe';
 import { LoadingComponent } from '../../../components/loading/loading.component';
 import { AuthService } from '../../../services/auth.service';
+import { QuillViewComponent, QuillViewHTMLComponent } from 'ngx-quill';
 
 @Component({
   selector: 'app-blog-post',
   standalone: true,
-  imports: [DatePipe, LinkifyPipe, LoadingComponent],
+  imports: [DatePipe, LinkifyPipe, LoadingComponent, QuillViewHTMLComponent],
   templateUrl: './blog-post.component.html',
   styleUrl: './blog-post.component.css'
 })
 export class BlogPostComponent implements OnInit {
   id: string = "";
+
   loading = false
   post: Post | null = null; // Initialize post as null or undefined
   userId = ""

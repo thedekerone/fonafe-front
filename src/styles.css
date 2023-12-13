@@ -30,3 +30,24 @@
   font-weight: 900;
   font-style: normal;
 }
+
+
+.ql-container{
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    -moz-tab-size: 4;
+    tab-size: 4;
+    font-family: MuseoSans, sans-serif;
+    font-feature-settings: normal;
+    font-variation-settings: normal;
+    font-size: 1rem;
+
+
+
+    .ql-size-small{
+      font-size: .75rem;
+    }
+    .ql-size-large{
+      font-size: 1.5rem;
+    }
+}

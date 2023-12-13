@@ -1,6 +1,6 @@
 @if(loading){
 <div class="lg:my-36 my-24">
-  <app-loading/>
+  <app-loading />
 </div>
 }
 @else{
@@ -11,17 +11,15 @@
       {{post?.title}}
       @if(userId.length > 0){
       <a [href]="'/sala-de-prensa/editar/' + post?.id" class="flex items-center"> <img
-        src="https://us.123rf.com/450wm/andrerosi/andrerosi2102/andrerosi210200338/164406397-editar-icono-de-vector-editar-icono-de-documento-editar-icono-de-texto-l%C3%A1piz-inscribirse.jpg"
-        class="w-10" alt="boton editar"> <span class="text-sm">Editar</span>
+          src="https://us.123rf.com/450wm/andrerosi/andrerosi2102/andrerosi210200338/164406397-editar-icono-de-vector-editar-icono-de-documento-editar-icono-de-texto-l%C3%A1piz-inscribirse.jpg"
+          class="w-10" alt="boton editar"> <span class="text-sm">Editar</span>
       </a>
 
-      <button (click)="deletePost(post?.id)"  class="flex items-center"> <img
-        src="https://cdn-icons-png.flaticon.com/512/6861/6861362.png"
-        class="w-5" alt="boton eliminar"> <span class="text-sm text-red-400">Eliminar</span>
+      <button (click)="deletePost(post?.id)" class="flex items-center"> <img
+          src="https://cdn-icons-png.flaticon.com/512/6861/6861362.png" class="w-5" alt="boton eliminar"> <span
+          class="text-sm text-red-400">Eliminar</span>
       </button>
       }
-
-
 
     </h1>
   </header>
@@ -32,8 +30,10 @@
       </figure>
       <span class="text-right block mt-3">Actualizado {{post?.updatedDate | date}}</span>
     </div>
-    <div class="pt-8" [innerHTML]="post?.content ?? '' | linkify"></div>
 
+    <div class="mt-8">
+      <quill-view-html [content]="post?.content ?? ''" />
+    </div>
   </main>
 </article>
 }

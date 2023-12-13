@@ -6,7 +6,7 @@
 @else{
 <form class="space-y-4 container mx-auto px-6 md:my-12 my-8 lg:my-24" [formGroup]="postForm" (ngSubmit)="onSubmit()">
   <h1 class="mb-6 text-4xl font-bold">
-    Editar Nota de Prensa
+    {{title}}
   </h1>
   <div>
     <label for="title" class="block text-sm font-medium text-gray-700">Titulo</label>
@@ -14,15 +14,13 @@
     class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
   </div>
 
-  <div>
-    <label for="content" class="block text-sm font-medium text-gray-700">Contenido</label>
-    <textarea id="content" formControlName="content"
-      class="mt-1 block h-48 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+  <div class="w-full">
+     <quill-editor formControlName="content"></quill-editor>
   </div>
 
   <div>
     <label for="img" class="block text-sm font-medium text-gray-700">Imagen</label>
-    <input type="file" id="img" (change)="handleFileInput($event)"
+    <input type="file" id="img" value="imgURl" (change)="handleFileInput($event)"
     class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
     @if(imgURL) {
        <img [src]="imgURL" alt="imagen de sala de prensa" class="w-64 mt-3">
