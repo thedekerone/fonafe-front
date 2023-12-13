@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable, map, of } from 'rxjs';
 import { environment } from '../../environments/environment.development';
 import { Post } from '../models/post';
+import { Storage, ref, uploadBytes, uploadBytesResumable } from '@angular/fire/storage';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { Post } from '../models/post';
 export class PostService {
   blogEndpoint = environment.serverUrl + "/Blog/"
   constructor(private http: HttpClient) { }
-
+  storage = inject(Storage)
 
   getAllPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(this.blogEndpoint).pipe(
@@ -21,6 +22,13 @@ export class PostService {
     );
   }
 
+  async uploadImage(file: File) {
+    const filePath = `test/${file.name}`;
+    const fileRef = ref(this.storage, filePath);
+    const task = await  uploadBytes(fileRef, file);
+
+    return task
+  }
   getPostById(id: string): Observable<any> {
     return this.http.get<Post>(this.blogEndpoint + id)
   }

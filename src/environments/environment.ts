@@ -1,5 +1,5 @@
 export const environment = {
-  serverUrl: "https://localhost:5001/api",
+  serverUrl: "https://4b00-2001-14ba-21e9-8200-e68b-3f1-8dc-5cca.ngrok-free.app",
   firebaseConfig:  {
     apiKey: "AIzaSyCIEHXo-nM0GkhVkyb3P-0QxxA_OpcTbQ8",
     authDomain: "fonafe-back.firebaseapp.com",
