@@ -84,7 +84,7 @@ export class EditPostComponent implements OnInit {
       this.loading = true
       console.log('Form Submitted', this.postForm.value);
       this.postService.createPost({ ...this.postForm.value, imageUrl: this.imgURL, userId: this.userId }).subscribe(res => {
-        this.router.navigate(["/sala-de-prensa"])
+        this.router.navigate([`/sala-de-prensa/${res.id}`])
         this.loading = false
         console.log(res)
       }, err => console.log(err))
@@ -92,15 +92,14 @@ export class EditPostComponent implements OnInit {
       console.error('Form is not valid');
     }
   }
-  editPost() {
 
-    console.log(this.postForm.value)
+  editPost() {
     if (this.postForm.valid) {
       this.loadingButton = true
       this.postService.updatePost(this.postId, { ...this.postForm.value, imageUrl: this.imgURL, userId: this.userId }).subscribe(res => {
         console.log(res)
         this.loadingButton = false
-        this.router.navigate(["/sala-de-prensa"])
+        this.router.navigate([`/sala-de-prensa/${this.postId}`])
       })
     } else {
       this.loadingButton = false
