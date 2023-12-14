@@ -10,7 +10,13 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
-
+  links = [
+    { url: '/nosotros', title: '¿Quiénes Somos?' },
+    { url: '/proposito', title: 'Nuestro Propósito' },
+    { url: '/memoria', title: 'Memoria Anual' },
+    { url: '/video', title: 'Video Manifiesto' },
+    { url: '/sala-de-prensa', title: 'Sala de Prensa' }
+  ];
   isLoggedIn = false
   showMenu = false;
 

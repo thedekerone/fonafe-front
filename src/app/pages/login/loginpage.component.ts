@@ -12,22 +12,25 @@ import { ButtonComponent } from '../../components/button/button.component';
   styleUrl: './loginpage.component.css'
 })
 export class LoginpageComponent {
-  loading = false
+  loading = false;
+  errorMessage = ''; // Property to store the error message
 
   constructor(private authService: AuthService, private router: Router) { }
+
   login(form: any) {
     const { email, password } = form;
     if (email && password) {
-      this.loading = true
+      this.loading = true;
       this.authService.signIn(email, password)
         .then(res => {
-          this.loading = false
-          // Handle the response
-          this.router.navigate(["/home"])
+          this.loading = false;
+          this.router.navigate(["/home"]);
         })
         .catch(err => {
-          // Handle errors
+          this.loading = false;
+          this.errorMessage = 'Error al iniciar sesión. Por favor, inténtalo de nuevo.'; // Set the error message
         });
     }
   }
 }
+

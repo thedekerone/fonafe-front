@@ -1,45 +1,44 @@
+<div class="flex h-screen w-screen lg:bg-red-600">
+  <!-- Left Side -->
+  <div class="hidden lg:flex lg:flex-col lg:w-2/5 lg:items-center lg:justify-center lg:text-white lg:p-10">
+    <img src="../../assets/LOGO_BLANCO.svg" alt="Logo placeholder for FONAFE" class="mb-4 max-w-md" />
+  </div>
 
-  <div class="flex h-screen w-screen lg:bg-red-600">
-    <!-- Left Side -->
-    <div class="hidden lg:flex lg:flex-col lg:w-2/5 lg:items-center lg:justify-center lg:text-white lg:p-10">
-      <img src="../../assets/LOGO_BLANCO.svg" alt="Logo placeholder for FONAFE" class="mb-4 text-white" />
+  <!-- Right Side -->
+  <div class="flex flex-col w-screen lg:w-3/5 items-center justify-center bg-white p-5">
+    <div class="flex justify-end w-full pr-5 absolute right-8 top-10">
+      <a routerLink="/home">
+        <img src="../../assets/BOTON_DE_INICIO.svg" class="w-20" alt="botoninicio" />
+      </a>
     </div>
-
-    <!-- Right Side -->
-    <div class="flex flex-col w-screen lg:w-3/5 items-center justify-items-start bg-white p-5">
-      <div class="flex justify-end w-full pr-5">
-        <a routerLink="/home">
-          <img src="../../assets/BOTON_DE_INICIO.svg" class="w-20" alt="botoninicio" />
-        </a>
-      </div>
-      <div class="flex flex-col h-screen justify-center items-center">
-        <h2 class="text-2xl font-bold mb-2 xl:text-3xl">INICIAR SESIÓN</h2>
-        <div class="flex gap-4 mb-4">
-          <!-- Social buttons (placeholders) -->
-          <button class="bg-white text-gray-600 rounded-full border border-gray-300 w-10 h-10 flex items-center justify-center">
-            <i class="fab fa-facebook-f"></i>
-          </button>
-          <button class="bg-white text-gray-600 rounded-full border border-gray-300 w-10 h-10 flex items-center justify-center">
-            <i class="fab fa-google"></i>
-          </button>
-          <button class="bg-white text-gray-600 rounded-full border border-gray-300 w-10 h-10 flex items-center justify-center">
-            <i class="fab fa-linkedin-in"></i>
-          </button>
+    <div class="flex flex-col w-full max-w-md justify-center items-center">
+      <h2 class="text-2xl font-bold mb-4 xl:text-3xl text-center">INICIAR SESIÓN</h2>
+      <div class="text-sm mb-4 xl:text-xl text-center">o usar tu cuenta</div>
+      <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)" class="w-full px-4">
+        <div class="relative mb-4">
+          <input type="email" placeholder="Correo electrónico" name="email" ngModel #email="ngModel" required
+            class="input-field border-2 border-gray-200 rounded-full w-full pl-10 py-2 pr-2 focus:outline-none" />
+          @if(email.invalid && (email.dirty || email.touched)){
+          <div class="text-red-500 text-xs italic">Correo
+            electrónico es requerido.</div>
+          }
         </div>
-        <div class="text-sm mb-4 xl:text-xl">o usar tu cuenta</div>
-        <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
-          <div class="relative mb-4">
-            <i class="fas fa-user input-icon text-gray-400 absolute left-3 top-3"></i>
-            <input type="email" placeholder="Correo electrónico" name="email" ngModel required class="input-field border-2 border-gray-200 rounded-full w-56 xl:w-80 pl-10 py-2 pr-2 focus:outline-none" />
-          </div>
-          <div class="relative mb-4">
-            <i class="fas fa-lock input-icon text-gray-400 absolute left-3 top-3"></i>
-            <input type="password" placeholder="Contraseña" name="password" ngModel required class="input-field border-2 border-gray-200 rounded-full w-56 xl:w-80 pl-10 py-2 pr-2 focus:outline-none" />
-          </div>
-          <div class="text-gray-600 text-sm mb-4 cursor-pointer">¿Has olvidado la contraseña?</div>
-
-          <button type="submit" class="bg-red-600 text-white rounded-full px-16 py-2 focus:outline-none" [disabled]="!loginForm.valid || loading">INICIAR SESIÓN</button>
-        </form>
-      </div>
+        <div class="relative mb-4">
+          <input type="password" placeholder="Contraseña" name="password" ngModel #password="ngModel" required
+            class="input-field border-2 border-gray-200 rounded-full w-full pl-10 py-2 pr-2 focus:outline-none" />
+          @if(password.invalid && (password.dirty || password.touched)){
+          <div class="text-red-500 text-xs italic">
+            Contraseña es requerida.</div>
+          }
+        </div>
+        <button type="submit" class="bg-red-600 text-white rounded-full w-full py-2 focus:outline-none"
+          [disabled]="!loginForm.valid || loading">INICIAR SESIÓN</button>
+        @if(errorMessage){
+        <div class="text-center text-red-500">
+          {{ errorMessage }}
+        </div>
+        }
+      </form>
     </div>
   </div>
+</div>

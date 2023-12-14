@@ -7,6 +7,12 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['MuseoSans', 'sans-serif']
+      },
+      colors: {
+        gray: {
+          navbar: '#565A5D',
+          navbarHover: '#828282',
+        }
       }
     },
   },

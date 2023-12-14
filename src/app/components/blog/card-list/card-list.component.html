@@ -1,8 +1,14 @@
 <div class="mt-12 mb-6">
-  <app-header-line [title]="title"/>
+  <app-header-line [title]="title" />
 </div>
-<div class="container md:grid-cols-2 mb-24 grid mx-auto xl:grid-cols-4 grid-cols-1  gap-12">
-  @for (post of posts; track post){
-  <app-card [id]="post.id" [imageUrl]="post.imageUrl" [date]="post.updatedDate" [url]="post.id" [title]="post.title"/>
-    }
+<div class="container md:grid-cols-2 mb-24 grid mx-auto xl:grid-cols-4 grid-cols-1 gap-12">
+  @for (post of posts; track post) {
+    <app-card
+      [id]="post.id"
+      [imageUrl]="post.imageUrl"
+      [date]="post.updatedDate"
+      [url]="post.id"
+      [title]="post.title"
+    />
+  }
 </div>

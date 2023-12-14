@@ -1,72 +1,98 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, afterNextRender } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from '../../../models/post';
-import { DatePipe } from '@angular/common';
+import { DatePipe, Location } from '@angular/common';
 import { PostService } from '../../../services/post-service';
 import { LinkifyPipe } from '../../../utils/linkify.pipe';
 import { LoadingComponent } from '../../../components/loading/loading.component';
 import { AuthService } from '../../../services/auth.service';
-import { QuillViewComponent, QuillViewHTMLComponent } from 'ngx-quill';
+import { QuillViewHTMLComponent } from 'ngx-quill';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-blog-post',
   standalone: true,
   imports: [DatePipe, LinkifyPipe, LoadingComponent, QuillViewHTMLComponent],
   templateUrl: './blog-post.component.html',
-  styleUrl: './blog-post.component.css'
+  styleUrl: './blog-post.component.css',
 })
 export class BlogPostComponent implements OnInit {
-  id: string = "";
-
-  loading = false
+  id: string = '';
+  currentUrl: string="";
+  loading = false;
   post: Post | null = null; // Initialize post as null or undefined
-  userId = ""
+  userId = '';
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private location: Location,
     private postService: PostService,
-    private authService: AuthService
-  ) { }
+    private authService: AuthService,
+    private metaTagService: Meta,
+    private titleService: Title
+  ) {
+    afterNextRender(()=>{
+      this.currentUrl = window.location.origin + this.location.path();
+    })
+
+    // Alternatively, using Router (to get full URL)
+  }
+  setMetaTags() {
+    if (this.post) {
+      this.titleService.setTitle(this.post.title);
+      this.metaTagService.updateTag({ name: 'description', content: this.post.content! });
+      this.metaTagService.updateTag({ property: 'og:title', content: this.post.title });
+      this.metaTagService.updateTag({ property: 'og:description', content: this.post.content! });
+      this.metaTagService.updateTag({ property: 'og:url', content: this.currentUrl });
+      this.metaTagService.updateTag({ property: 'og:image', content: this.post.imageUrl });
+      this.metaTagService.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
+      // Add more tags as needed
+    }
+  }
 
   ngOnInit() {
-    this.loading = true
+    this.loading = true;
     this.route.paramMap.subscribe(params => {
-      this.id = params.get('id') || "";
+      this.id = params.get('id') || '';
       this.getPost(this.id);
     });
 
     this.authService.user.subscribe(res => {
-      this.userId = res?.uid ?? ""
-    })
+      this.userId = res?.uid ?? '';
+    });
+    this.setMetaTags();
   }
 
   deletePost(id?: string) {
-    if (!id) return
+    if (!id) return;
     this.postService.deletePost(id).subscribe(res => {
-      console.log(res)
-      this.router.navigate(["/sala-de-prensa"])
-    })
+      console.log(res);
+      this.router.navigate(['/sala-de-prensa']);
+    });
   }
 
   getPost(id: string): void {
     if (!id) {
-      this.router.navigate(["sala-de-prensa"]);
+      this.router.navigate(['sala-de-prensa']);
       return;
     }
 
-    this.postService.getPostById(id).subscribe(postData => {
-      if (postData) {
-        this.loading = false
-        this.post = postData;
-      } else {
-        // Handle the case where post is not found
+    this.postService.getPostById(id).subscribe(
+      postData => {
+        if (postData) {
+          this.loading = false;
+          this.post = postData;
+        } else {
+          // Handle the case where post is not found
+          this.router.navigate(['sala-de-prensa']);
+        }
+      },
+      error => {
+        // Handle any errors here
+        console.error('Error fetching post:', error);
         this.router.navigate(['sala-de-prensa']);
       }
-    }, error => {
-      // Handle any errors here
-      console.error('Error fetching post:', error);
-      this.router.navigate(['sala-de-prensa']);
-    });
+    );
   }
 }

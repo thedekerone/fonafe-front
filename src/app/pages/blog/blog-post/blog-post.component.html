@@ -1,39 +1,63 @@
-@if(loading){
-<div class="lg:my-36 my-24">
-  <app-loading />
-</div>
-}
-@else{
-<article class="container px-3 xl:px-8 mx-auto my-12">
-  <header>
-    <h2 class="font-bold">{{post?.category}}</h2>
-    <h1 class="text-3xl font-bold my-4 flex items-center gap-5">
-      {{post?.title}}
-      @if(userId.length > 0){
-      <a [href]="'/sala-de-prensa/editar/' + post?.id" class="flex items-center"> <img
-          src="https://us.123rf.com/450wm/andrerosi/andrerosi2102/andrerosi210200338/164406397-editar-icono-de-vector-editar-icono-de-documento-editar-icono-de-texto-l%C3%A1piz-inscribirse.jpg"
-          class="w-10" alt="boton editar"> <span class="text-sm">Editar</span>
-      </a>
+@if (loading) {
+  <div class="lg:my-36 my-24">
+    <app-loading />
+  </div>
+} @else {
+  <article class="container px-3 xl:px-8 mx-auto my-12">
+    <header>
+      <h2 class="font-bold flex items-center justify-between">
+        {{ post?.category }}
 
-      <button (click)="deletePost(post?.id)" class="flex items-center"> <img
-          src="https://cdn-icons-png.flaticon.com/512/6861/6861362.png" class="w-5" alt="boton eliminar"> <span
-          class="text-sm text-red-400">Eliminar</span>
-      </button>
-      }
+        <div class="flex items-center gap-4">
+          @if (userId.length > 0) {
+            <a [href]="'/sala-de-prensa/editar/' + post?.id" class="flex items-center">
+              <img src="https://cdn-icons-png.flaticon.com/512/1827/1827933.png" class="w-5" alt="boton editar" />
+              <span class="text-sm mt-1 ml-1 hidden sm:block">Editar</span>
+            </a>
 
-    </h1>
-  </header>
-  <main>
-    <div>
-      <figure class="img-container">
-        <img class="w-full" [src]="post?.imageUrl ?? '../../../../assets/IMAGEN.svg'" alt="text" />
-      </figure>
-      <span class="text-right block mt-3">Actualizado {{post?.updatedDate | date}}</span>
-    </div>
+            <button (click)="deletePost(post?.id)" class="flex items-center">
+              <img src="https://cdn-icons-png.flaticon.com/512/6861/6861362.png" class="w-5" alt="boton eliminar" />
+              <span class="text-sm hidden sm:block mt-1 ml-1 text-red-400">Eliminar</span>
+            </button>
+          }
 
-    <div class="mt-8">
-      <quill-view-html [content]="post?.content ?? ''" />
-    </div>
-  </main>
-</article>
+          <a
+            href="https://www.linkedin.com/shareArticle?mini=true&url={{ currentUrl }}"
+            target="_blank"
+            class="social-button"
+          >
+            <!-- LinkedIn Icon -->
+            <img src="../../../../assets/REDES/linkelind.svg" class="w-6" alt="Compartir en LinkedIn" />
+          </a>
+          <a
+            href="https://twitter.com/share?url={{ currentUrl }}&text={{ post?.title }}"
+            target="_blank"
+            class="social-button"
+          >
+            <!-- Twitter Icon -->
+            <img src="../../../../assets/REDES/TWITEER.svg" class="w-6" alt="Compartir en Twitter" />
+          </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u={{ currentUrl }}" target="_blank" class="social-button">
+            <!-- Facebook Icon -->
+            <img src="../../../../assets/REDES/FACEBOOK.svg" class="w-6" alt="Compartir en Facebook" />
+          </a>
+        </div>
+      </h2>
+      <h1 class="md:text-2xl lg:text-3xl text-xl font-bold my-4 flex items-center gap-5">
+        {{ post?.title }}
+      </h1>
+    </header>
+    <main>
+      <div>
+        <figure class="img-container">
+          <img class="w-full" [src]="post?.imageUrl ?? '../../../../assets/IMAGEN.svg'" alt="text" />
+        </figure>
+        <span class="text-right block mt-3">Actualizado {{ post?.updatedDate | date }}</span>
+      </div>
+
+      <div class="mt-8">
+        <quill-view-html [content]="post?.content ?? ''" />
+      </div>
+    </main>
+  </article>
 }

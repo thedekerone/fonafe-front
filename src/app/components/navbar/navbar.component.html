@@ -1,7 +1,7 @@
 <div class="flex overflow-hidden flex-col ">
   <!--banners-->
   <div class="hidden md:flex md:flex-row md:w-screen bg-white md:justify-between md:py-8 md:px-24">
-    <a href="/">
+    <a class="flex items-center" href="/">
       <img class="w-52" src="../../../assets/LOGO.svg" alt="Logo">
     </a>
 
@@ -17,39 +17,33 @@
     </div>
   </div>
   <!--boton mobile-->
-  <div class="flex flex-row  w-screen bg-gray-500 justify-between items-center py-2 md:hidden">
+  <div class="flex flex-row  w-screen bg-gray-navbar justify-between items-center py-2 md:hidden">
     <a routerLink="/"><img class="w-36 pl-8" src="../../../assets/LOGO_BLANCO.svg" alt="Logo"></a>
     <button (click)="handleClick()"
       class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium pr-5 sm:pr-14">
       <i class="fa-solid fa-bars"></i>
     </button>
   </div>
+
   <!--navs-->
-  <div class="hidden md:flex md:flex-row md:flex-wrap w-screen md:bg-gray-500 md:justify-around ">
-    <a routerLink="/nosotros" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">¿Quienes
-      Somos?</a>
-    <a routerLink="/proposito" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Nuestro
-      Proposito</a>
-    <a routerLink="/memoria" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Memoria
-      Anual</a>
-    <a routerLink="/video" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Video
-      Manifiesto</a>
-    <a routerLink="/sala-de-prensa" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Sala
-      de Prensa</a>
+  <div class="hidden md:flex md:flex-row md:flex-wrap w-screen md:bg-gray-navbar md:justify-around">
+    @for(link of links; track link){
+    <a [routerLink]="link.url"
+      class=" text-white hover:bg-gray-navbarHover rounded-md text-sm md:text-md font-medium flex-1 text-center py-4 transition-colors duration-200">
+      {{ link.title }}
+    </a>
+    }
   </div>
+
   <!--navs mobile-->
   @if(showMenu){
-  <div class="flex flex-col md:hidden bg-gray-500 space-y-1 px-2 pb-3 pt-2  ">
-    <a routerLink="/nosotros" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">¿Quienes
-      Somos?</a>
-    <a routerLink="/proposito" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Nuestro
-      Proposito</a>
-    <a routerLink="/memoria" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Memoria
-      Anual</a>
-    <a routerLink="/video" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Video
-      Manifiesto</a>
-    <a routerLink="/sala-de-prensa" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Sala
-      de Prensa</a>
+  <div class="md:hidden flex flex-col bg-gray-navbar space-y-1 px-2 pb-3 pt-2">
+    @for(link of links; track link){
+    <a [routerLink]="link.url"
+      class="text-gray-300 hover:text-white hover:bg-gray-700 rounded-md text-sm font-medium block py-4 text-center transition-colors duration-300">
+      {{ link.title }}
+    </a>
+    }
   </div>
   }
 </div>
