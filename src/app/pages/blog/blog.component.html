@@ -1,31 +1,39 @@
-@if(loading){
-<div class="my-24 lg:my-48">
-  <app-loading />
-</div>
-}
-@else{
-<div class="container px-3 mx-auto">
-  <div class="flex justify-between items-center -mb-2 mt-8 ">
-    <div class="flex space-x-2 ">
-      <input type="text" [(ngModel)]="searchTerm" placeholder="Search posts..."
-        class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300">
+@if (posts.length === 0) {
+  <div class="my-24 lg:my-48">
+    <app-loading />
+  </div>
+} @else {
+  <app-blog-post [post]="posts[0]" />
 
-      <button (click)="search()"
-        class="bg-red-500 text-white font-semibold p-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300 focus:ring-opacity-50">
-        Search
-      </button>
+  <div class="container px-3 mx-auto">
+    <div class="flex justify-between items-center -mb-2 mt-8">
+      <div class="flex space-x-2">
+        <input
+          type="text"
+          [(ngModel)]="searchTerm"
+          placeholder="Search posts..."
+          class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+        />
+
+        <button
+          (click)="search()"
+          class="bg-red-500 text-white font-semibold p-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300 focus:ring-opacity-50"
+        >
+          Search
+        </button>
+      </div>
+
+      @if (userId.length > 0) {
+        <a
+          href="/sala-de-prensa/crear/"
+          class="bg-red-500 text-white font-semibold p-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300 focus:ring-opacity-50"
+        >
+          Crear Sala de Prensa
+        </a>
+      }
     </div>
 
-    @if(userId.length > 0){
-    <a href="/sala-de-prensa/crear/"
-      class="bg-red-500 text-white font-semibold p-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300 focus:ring-opacity-50">
-      Crear Sala de Prensa
-    </a>
-    }
-
+    <!-- Your existing code for displaying posts -->
+    <app-card-list [posts]="filteredPosts"></app-card-list>
   </div>
-
-  <!-- Your existing code for displaying posts -->
-  <app-card-list [posts]="filteredPosts"></app-card-list>
-</div>
 }

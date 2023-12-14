@@ -1,17 +1,17 @@
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { getAuth, provideAuth } from '@angular/fire/auth';
-import { QuillModule, provideQuillConfig } from 'ngx-quill';
-import { provideClientHydration } from '@angular/platform-browser';
+import {  provideQuillConfig } from 'ngx-quill';
+import { provideClientHydration, withHttpTransferCacheOptions } from '@angular/platform-browser';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
-    importProvidersFrom(HttpClientModule),
+    provideHttpClient(withFetch()),
     importProvidersFrom(
       provideFirebaseApp(() =>
         initializeApp({
@@ -52,6 +52,8 @@ export const appConfig: ApplicationConfig = {
         ],
       },
     }),
-    provideClientHydration(),
+    provideClientHydration(withHttpTransferCacheOptions({
+      includePostRequests: true
+    }))
   ],
 };

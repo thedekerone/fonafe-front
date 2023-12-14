@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable, map, of } from 'rxjs';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment';
 import { Post } from '../models/post';
 import { Storage, ref, uploadBytes, uploadBytesResumable } from '@angular/fire/storage';
 

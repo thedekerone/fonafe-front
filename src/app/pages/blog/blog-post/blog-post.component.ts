@@ -1,4 +1,4 @@
-import { Component, OnInit, afterNextRender } from '@angular/core';
+import { Component, Input, OnInit, afterNextRender } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from '../../../models/post';
 import { DatePipe, Location } from '@angular/common';
@@ -18,9 +18,9 @@ import { Meta, Title } from '@angular/platform-browser';
 })
 export class BlogPostComponent implements OnInit {
   id: string = '';
-  currentUrl: string="";
+  currentUrl: string = '';
   loading = false;
-  post: Post | null = null; // Initialize post as null or undefined
+  @Input() post?: Post | null = null; // Initialize post as null or undefined
   userId = '';
 
   constructor(
@@ -32,10 +32,7 @@ export class BlogPostComponent implements OnInit {
     private metaTagService: Meta,
     private titleService: Title
   ) {
-    afterNextRender(()=>{
       this.currentUrl = window.location.origin + this.location.path();
-    })
-
     // Alternatively, using Router (to get full URL)
   }
   setMetaTags() {
@@ -52,22 +49,21 @@ export class BlogPostComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.setMetaTags();
+    this.authService.user.subscribe(res => {
+      this.userId = res?.uid ?? '';
+    });
+    if (this.post) return;
     this.loading = true;
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id') || '';
       this.getPost(this.id);
     });
-
-    this.authService.user.subscribe(res => {
-      this.userId = res?.uid ?? '';
-    });
-    this.setMetaTags();
   }
 
   deletePost(id?: string) {
     if (!id) return;
     this.postService.deletePost(id).subscribe(res => {
-      console.log(res);
       this.router.navigate(['/sala-de-prensa']);
     });
   }
@@ -90,7 +86,6 @@ export class BlogPostComponent implements OnInit {
       },
       error => {
         // Handle any errors here
-        console.error('Error fetching post:', error);
         this.router.navigate(['sala-de-prensa']);
       }
     );

@@ -22,13 +22,10 @@ export class HomeComponent {
   ngOnInit(): void {
     this.postService.getAllPosts().subscribe(data => {
       this.posts = data.slice(0,4);
-      console.log(data)
     }, (error) => {
-      console.log(error)
     });
     this.authService.user.subscribe(user => {
       this.isLoggedIn = !!user;
-      console.log(user)
       // Additional logic based on authentication state
     });
   }
@@ -36,7 +33,7 @@ export class HomeComponent {
   onSelectPost(id: string): void {
     this.postService.getPostById(id).subscribe(data => {
       // Handle the selected post data, e.g., displaying it in a modal or a separate div
-      console.log(data);
+
     });
   }
 }

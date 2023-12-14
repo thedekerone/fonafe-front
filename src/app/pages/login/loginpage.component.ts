@@ -24,7 +24,7 @@ export class LoginpageComponent {
       this.authService.signIn(email, password)
         .then(res => {
           this.loading = false;
-          this.router.navigate(["/home"]);
+          this.router.navigate(["/"]);
         })
         .catch(err => {
           this.loading = false;

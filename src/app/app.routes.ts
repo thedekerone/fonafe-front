@@ -13,15 +13,14 @@ import { authGuard, reverseAuthGuard } from './auth.guard';
 import { EditPostComponent } from './pages/blog/edit-post/edit-post.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', component:HomeComponent,  pathMatch: 'full' },
   { path: 'login', component: LoginpageComponent, canActivate: [reverseAuthGuard] },
-  { path: 'home', component: HomeComponent },
-  { path: 'video', component: VideoComponent },
+  { path: 'video', component: VideoComponent, canActivate: [authGuard] },
   { path: 'nosotros', component: NosotrosComponent },
   { path: 'proposito', component: PropositoComponent },
   { path: 'memoria', component: MemoriaComponent },
-  { path: 'sala-de-prensa/crear', component: CreatePostComponent, data:{type: "create"}, canActivate: [authGuard] },
-  { path: 'sala-de-prensa/editar/:id', component: EditPostComponent, data:{type: "edit"}, canActivate: [authGuard]},
+  { path: 'sala-de-prensa/crear', component: CreatePostComponent, canActivate: [authGuard] },
+  { path: 'sala-de-prensa/editar/:id', component: EditPostComponent, canActivate: [authGuard]},
   { path: 'sala-de-prensa/:id', component: BlogPostComponent },
   { path: 'sala-de-prensa', component: BlogComponent},
   { path: '**', component: CreateMaintenancePageComponent },

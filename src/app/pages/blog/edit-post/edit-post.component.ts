@@ -48,12 +48,10 @@ export class EditPostComponent implements OnInit {
 
     const task = await this.postService.uploadImage(fileToUpload)
     this.imgURL = await getDownloadURL(task.ref)
-    console.log(this.imgURL)
     this.loadingButton = false
   }
 
   ngOnInit(): void {
-    console.log(this.type)
     if (this.type === "create") return
     this.loading = true
     this.authService.user.subscribe(res => {
@@ -82,14 +80,11 @@ export class EditPostComponent implements OnInit {
   createPost() {
     if (this.postForm.valid) {
       this.loading = true
-      console.log('Form Submitted', this.postForm.value);
       this.postService.createPost({ ...this.postForm.value, imageUrl: this.imgURL, userId: this.userId }).subscribe(res => {
         this.router.navigate([`/sala-de-prensa/${res.id}`])
         this.loading = false
-        console.log(res)
       }, err => console.log(err))
     } else {
-      console.error('Form is not valid');
     }
   }
 

@@ -25,7 +25,6 @@ export class AuthService {
       return await createUserWithEmailAndPassword(this.auth, email, password);
     } catch (error) {
       // Handle errors here
-      console.error('Error during sign up:', error);
       throw error;
     }
   }
@@ -36,7 +35,6 @@ export class AuthService {
       return await signInWithEmailAndPassword(this.auth, email, password);
     } catch (error) {
       // Handle errors here
-      console.error('Error during sign in:', error);
       throw error;
     }
   }
@@ -47,7 +45,6 @@ export class AuthService {
       await signOut(this.auth);
     } catch (error) {
       // Handle errors here
-      console.error('Error during sign out:', error);
       throw error;
     }
   }
