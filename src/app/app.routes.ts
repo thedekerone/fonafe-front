@@ -18,7 +18,7 @@ import { NonFinancialCompaniesComponent } from './pages/non-financial-companies/
 export const routes: Routes = [
   { path: '', component:HomeComponent,  pathMatch: 'full' },
   { path: 'login', component: LoginpageComponent, canActivate: [reverseAuthGuard] },
-  { path: 'video', component: VideoComponent, canActivate: [authGuard] },
+  { path: 'video', component: VideoComponent },
   { path: 'nosotros', component: NosotrosComponent },
   { path: 'proposito', component: PropositoComponent },
   { path: 'memoria', component: MemoriaComponent },
