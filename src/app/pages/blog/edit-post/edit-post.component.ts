@@ -14,17 +14,17 @@ import { QuillEditorComponent } from 'ngx-quill';
   standalone: true,
   imports: [ReactiveFormsModule, LoadingComponent, ButtonComponent, QuillEditorComponent],
   templateUrl: './edit-post.component.html',
-  styleUrl: './edit-post.component.css'
+  styleUrl: './edit-post.component.css',
 })
 export class EditPostComponent implements OnInit {
-  @Input() type: 'create' | 'edit' = "edit"
-  @Input() title =  "Editar sala de prensa"
+  @Input() type: 'create' | 'edit' = 'edit';
+  @Input() title = 'Editar sala de prensa';
   postForm: FormGroup;
-  loadingButton = false
+  loadingButton = false;
   loading = false;
-  userId = ""
-  postId: string = ""; // Assuming post IDs are strings
-  imgURL = ""
+  userId = '';
+  postId: string = ''; // Assuming post IDs are strings
+  imgURL = '';
   constructor(
     private formBuilder: FormBuilder,
     private postService: PostService,
@@ -36,70 +36,77 @@ export class EditPostComponent implements OnInit {
       title: ['', Validators.required],
       content: ['', Validators.required],
       updatedDate: ['', Validators.required],
-      category: ['']
+      category: [''],
     });
   }
 
-
   handleFileInput = async (files: Event) => {
     let fileToUpload = (files.currentTarget as HTMLInputElement)?.files?.item(0);
-    if (!fileToUpload) return
-    this.loadingButton = true
+    if (!fileToUpload) return;
+    this.loadingButton = true;
 
-    const task = await this.postService.uploadImage(fileToUpload)
-    this.imgURL = await getDownloadURL(task.ref)
-    this.loadingButton = false
-  }
+    const task = await this.postService.uploadImage(fileToUpload);
+    this.imgURL = await getDownloadURL(task.ref);
+    this.loadingButton = false;
+  };
 
   ngOnInit(): void {
-    if (this.type === "create") return
-    this.loading = true
-    this.authService.user.subscribe(res => {
-      this.userId = res?.uid ?? ""
-    })
+    if (this.type === 'create') return;
+    this.loading = true;
 
     this.activatedRoute.params.subscribe(params => {
       this.postId = params['id'];
-      this.postService.getPostById(this.postId).subscribe((postData: Post) => {
-        this.imgURL = postData.imageUrl
-        this.loading = false
-        this.postForm.patchValue({ ...postData, updatedDate: postData.updatedDate.toString().slice(0, 10) });
-      }, () => {
-        this.router.navigate(["/sala-de-prensa"])
-      });
+
+      this.postService.getPostById(this.postId).subscribe(
+        postData => {
+          this.imgURL = postData?.imageUrl ?? '';
+          this.loading = false;
+          this.postForm.patchValue({ ...postData, updatedDate: postData?.updatedDate.toString().slice(0, 10) });
+        },
+        () => {
+          this.router.navigate(['/sala-de-prensa']);
+        }
+      );
+    });
+    this.authService.user.subscribe(res => {
+      this.userId = res?.uid ?? '';
     });
   }
 
   onSubmit() {
-    if (this.type === "create") {
-      return this.createPost()
+    if (this.type === 'create') {
+      return this.createPost();
     }
-    this.editPost()
+    this.editPost();
   }
 
   createPost() {
     if (this.postForm.valid) {
-      this.loading = true
-      this.postService.createPost({ ...this.postForm.value, imageUrl: this.imgURL, userId: this.userId }).subscribe(res => {
-        this.router.navigate([`/sala-de-prensa/${res.id}`])
-        this.loading = false
-      }, err => console.log(err))
+      this.loading = true;
+      this.postService.createPost({ ...this.postForm.value, imageUrl: this.imgURL, userId: this.userId }).subscribe(
+        res => {
+          this.router.navigate([`/sala-de-prensa/${res.id}`]);
+          this.loading = false;
+        },
+        err => console.log(err)
+      );
     } else {
     }
   }
 
   editPost() {
     if (this.postForm.valid) {
-      this.loadingButton = true
-      this.postService.updatePost(this.postId, { ...this.postForm.value, imageUrl: this.imgURL, userId: this.userId }).subscribe(res => {
-        console.log(res)
-        this.loadingButton = false
-        this.router.navigate([`/sala-de-prensa/${this.postId}`])
-      })
+      this.loadingButton = true;
+      this.postService
+        .updatePost(this.postId, { ...this.postForm.value, imageUrl: this.imgURL, userId: this.userId })
+        .subscribe(res => {
+          console.log(res);
+          this.loadingButton = false;
+          this.router.navigate([`/sala-de-prensa/${this.postId}`]);
+        });
     } else {
-      this.loadingButton = false
+      this.loadingButton = false;
       console.error('Form is not valid');
     }
   }
 }
-

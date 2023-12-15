@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, afterNextRender } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Post } from '../../../models/post';
 import { DatePipe, Location } from '@angular/common';
 import { PostService } from '../../../services/post-service';
@@ -12,7 +12,7 @@ import { Meta, Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-blog-post',
   standalone: true,
-  imports: [DatePipe, LinkifyPipe, LoadingComponent, QuillViewHTMLComponent],
+  imports: [DatePipe, LinkifyPipe, LoadingComponent, QuillViewHTMLComponent, RouterModule],
   templateUrl: './blog-post.component.html',
   styleUrl: './blog-post.component.css',
 })

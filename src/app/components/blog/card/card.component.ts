@@ -1,14 +1,14 @@
 import { DatePipe } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [DatePipe],
+  imports: [DatePipe, RouterModule],
   templateUrl: './card.component.html',
   styleUrl: './card.component.css'
 })
-
 
 export class CardComponent {
   @Input({ required: true }) title: string = "Placeholder title"
@@ -16,4 +16,5 @@ export class CardComponent {
   @Input({ required: true }) date: Date= new Date();
   @Input() id:string = ""
   @Input() url:string = ""
+
 }

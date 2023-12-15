@@ -28,14 +28,14 @@ export class BlogComponent {
 
   ngOnInit() {
     this.loading = true
-    this.authService.user.subscribe(res => {
-      this.userId = res?.uid ?? ""
-    })
     this.postService.getAllPosts().subscribe(data => {
       this.posts = data;
       this.loading = false
       this.filteredPosts = data;
     });
+    this.authService.user.subscribe(res => {
+      this.userId = res?.uid ?? ""
+    })
   }
 
   search(): void {

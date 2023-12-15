@@ -1,6 +1,6 @@
 <article class="container h-full mx-auto max-w-md p-4 bg-gray-100">
   <div class="relative flex justify-center group items-center">
-    <a  [routerLink]="['/sala-de-prensa', id]" class="absolute text-center opacity-0 group-hover:opacity-100 rounded-3xl overflow-hidden font-semibold w-32 z-50">
+    <a [href]="'/sala-de-prensa/' +  id" class="absolute text-center opacity-0 group-hover:opacity-100 rounded-3xl overflow-hidden font-semibold w-32 z-50">
       <img src="../../../../assets/BOTON VER.svg" alt="ver boton">
     </a>
     <figure class="thumbnail group-hover:brightness-50">

@@ -10,7 +10,7 @@
 
         <div class="flex items-center gap-4">
           @if (userId.length > 0) {
-            <a [href]="'/sala-de-prensa/editar/' + post?.id" class="flex items-center">
+            <a [routerLink]="'/sala-de-prensa/editar/' + post?.id" class="flex items-center">
               <img src="https://cdn-icons-png.flaticon.com/512/1827/1827933.png" class="w-5" alt="boton editar" />
               <span class="text-sm mt-1 ml-1 hidden sm:block">Editar</span>
             </a>
@@ -22,7 +22,7 @@
           }
 
           <a
-            href="https://www.linkedin.com/shareArticle?mini=true&url={{ currentUrl }}"
+            routerLink="https://www.linkedin.com/shareArticle?mini=true&url={{ currentUrl }}"
             target="_blank"
             class="social-button"
           >
@@ -30,14 +30,14 @@
             <img src="../../../../assets/REDES/linkelind.svg" class="w-6" alt="Compartir en LinkedIn" />
           </a>
           <a
-            href="https://twitter.com/share?url={{ currentUrl }}&text={{ post?.title }}"
+            routerLink="https://twitter.com/share?url={{ currentUrl }}&text={{ post?.title }}"
             target="_blank"
             class="social-button"
           >
             <!-- Twitter Icon -->
             <img src="../../../../assets/REDES/TWITEER.svg" class="w-6" alt="Compartir en Twitter" />
           </a>
-          <a href="https://www.facebook.com/sharer/sharer.php?u={{ currentUrl }}" target="_blank" class="social-button">
+          <a routerLink="https://www.facebook.com/sharer/sharer.php?u={{ currentUrl }}" target="_blank" class="social-button">
             <!-- Facebook Icon -->
             <img src="../../../../assets/REDES/FACEBOOK.svg" class="w-6" alt="Compartir en Facebook" />
           </a>
