@@ -1,0 +1,20 @@
+<div class="overflow-x-auto">
+  <table class="min-w-full gap-4 divide-y divide-gray-200">
+    <thead class="bg-gray-dark text-white">
+      <tr>
+        <th class="text-center py-4 px-4 uppercase font-semibold text-sm rounded-l-lg">Indicadores</th>
+        <th class="text-center py-4 px-4 uppercase font-semibold text-sm">{{title}}</th>
+        <th class="text-center py-4 px-4 uppercase font-semibold text-sm rounded-r-lg">Unidad</th>
+      </tr>
+    </thead>
+    <tbody class="bg-white divide-y divide-gray-200">
+      @for (item of indicators; track item) {
+        <tr class="bg-gray-100 hover:bg-gray-100">
+          <td class="text-center rounder-lg py-6 px-4">{{ item.name }}</td>
+          <td class="text-center rounded-lg py-6 px-4">{{ item.formula }}</td>
+          <td class="text-center rounded-lg py-6 px-4">{{ item.unit }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

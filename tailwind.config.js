@@ -12,6 +12,7 @@ module.exports = {
         gray: {
           navbar: '#565A5D',
           navbarHover: '#828282',
+          dark: "#373a3c"
         }
       }
     },

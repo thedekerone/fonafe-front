@@ -11,6 +11,9 @@ import { MemoriaComponent } from './pages/memoria/memoria.component';
 import { BlogPostComponent } from './pages/blog/blog-post/blog-post.component';
 import { authGuard, reverseAuthGuard } from './auth.guard';
 import { EditPostComponent } from './pages/blog/edit-post/edit-post.component';
+import { DataSheetComponent } from './pages/data-sheet/data-sheet.component';
+import { FinancialCompaniesComponent } from './pages/financial-companies/financial-companies.component';
+import { NonFinancialCompaniesComponent } from './pages/non-financial-companies/non-financial-companies.component';
 
 export const routes: Routes = [
   { path: '', component:HomeComponent,  pathMatch: 'full' },
@@ -19,6 +22,9 @@ export const routes: Routes = [
   { path: 'nosotros', component: NosotrosComponent },
   { path: 'proposito', component: PropositoComponent },
   { path: 'memoria', component: MemoriaComponent },
+  { path: 'ficha-tecnica', component: DataSheetComponent},
+  { path: 'empresas-financieras', component: FinancialCompaniesComponent},
+  { path: 'empresas-no-financieras', component: NonFinancialCompaniesComponent},
   { path: 'sala-de-prensa/crear', component: CreatePostComponent, canActivate: [authGuard] },
   { path: 'sala-de-prensa/editar/:id', component: EditPostComponent, canActivate: [authGuard]},
   { path: 'sala-de-prensa/:id', component: BlogPostComponent },
