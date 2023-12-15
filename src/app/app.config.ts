@@ -1,5 +1,5 @@
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
-import { RouterModule, provideRouter } from '@angular/router';
+import { InMemoryScrollingFeature, InMemoryScrollingOptions, RouterModule, provideRouter, withInMemoryScrolling } from '@angular/router';
 import { routes } from './app.routes';
 import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
@@ -8,9 +8,17 @@ import { getAuth, provideAuth } from '@angular/fire/auth';
 import {  provideQuillConfig } from 'ngx-quill';
 import { provideClientHydration, withHttpTransferCacheOptions } from '@angular/platform-browser';
 
+const scrollConfig: InMemoryScrollingOptions = {
+  scrollPositionRestoration: 'top',
+  anchorScrolling: 'enabled',
+};
+
+const inMemoryScrollingFeature: InMemoryScrollingFeature =
+  withInMemoryScrolling(scrollConfig);
 export const appConfig: ApplicationConfig = {
+
   providers: [
-    provideRouter(routes),
+    provideRouter(routes, inMemoryScrollingFeature),
     provideHttpClient(withFetch()),
     importProvidersFrom(
       provideFirebaseApp(() =>

@@ -1,7 +1,7 @@
 <div class="flex overflow-hidden flex-col">
   <!--banners-->
   <div class="hidden md:flex md:flex-row md:w-screen bg-white md:justify-between md:py-8 md:px-24">
-    <a class="flex items-center" routerLink="/">
+    <a class="flex items-center"  routerLink="/">
       <img class="w-52" src="../../../assets/LOGO.svg" alt="Logo" />
     </a>
 
@@ -32,6 +32,7 @@
     @for (link of links; track link) {
       <a
         [routerLink]="link.url"
+        routerLinkActive="bg-gray-navbarHover"
         class="text-white hover:bg-gray-navbarHover rounded-md text-sm md:text-md font-medium flex-1 text-center py-4 transition-colors duration-200"
       >
         {{ link.title }}

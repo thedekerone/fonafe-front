@@ -32,8 +32,7 @@ export class BlogPostComponent implements OnInit {
     private metaTagService: Meta,
     private titleService: Title
   ) {
-      this.currentUrl = window.location.origin + this.location.path();
-    // Alternatively, using Router (to get full URL)
+    this.currentUrl = window.location.origin + this.location.path();
   }
   setMetaTags() {
     if (this.post) {
@@ -44,7 +43,6 @@ export class BlogPostComponent implements OnInit {
       this.metaTagService.updateTag({ property: 'og:url', content: this.currentUrl });
       this.metaTagService.updateTag({ property: 'og:image', content: this.post.imageUrl });
       this.metaTagService.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
-      // Add more tags as needed
     }
   }
 

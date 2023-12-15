@@ -7,11 +7,12 @@ import { FormsModule } from '@angular/forms';
 import { LoadingComponent } from '../../components/loading/loading.component';
 import { AuthService } from '../../services/auth.service';
 import { BlogPostComponent } from './blog-post/blog-post.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-blog',
   standalone: true,
-  imports: [CardListComponent, FormsModule, HeaderLineComponent, LoadingComponent, BlogPostComponent],
+  imports: [CardListComponent,RouterModule, FormsModule, HeaderLineComponent, LoadingComponent, BlogPostComponent],
   templateUrl: './blog.component.html',
   styleUrl: './blog.component.css'
 })
